@@ -637,6 +637,8 @@ body.modal-open {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    gap: 12px;
+    padding: 14px 18px;
   }
 
   .btn {
@@ -655,6 +657,20 @@ body.modal-open {
 
 @media (max-width: 480px) {
   .hero__tagline {
+    letter-spacing: 0.04em;
+  }
+
+  .cta-fixed__headline {
+    font-size: 15px;
+  }
+
+  .cta-fixed__note {
+    font-size: 12px;
+  }
+
+  .cta-fixed .btn {
+    padding: 12px 20px;
+    font-size: 16px;
     letter-spacing: 0.04em;
   }
 
