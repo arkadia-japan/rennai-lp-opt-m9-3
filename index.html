@@ -1,644 +1,218 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>恋愛で悩む誠実男性のための無料メルマガ｜信頼できる恋愛戦略</title>
-  <style>
-    :root {
-      --navy: #102753;
-      --mid-navy: #163979;
-      --light-navy: #23529b;
-      --gold: #c5a14f;
-      --light-gold: #f4ead2;
-      --cream: #f9f6f1;
-      --pale-blue: #e7f1ff;
-      --white: #ffffff;
-      --text: #1f2a37;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
-      color: var(--text);
-      background: var(--cream);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    header.hero {
-      background: linear-gradient(115deg, rgba(16, 39, 83, 0.82), rgba(16, 39, 83, 0.55)),
-        url('https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1340&q=80') center/cover;
-      color: var(--white);
-      padding: 72px 16px 96px;
-      text-align: center;
-    }
-
-    header.hero h1 {
-      font-size: clamp(2.2rem, 5vw, 3.6rem);
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      margin: 0 0 16px;
-    }
-
-    header.hero p.lead {
-      margin: 0 auto 32px;
-      max-width: 640px;
-      font-size: clamp(1.1rem, 2.6vw, 1.4rem);
-      opacity: 0.92;
-    }
-
-    .badge-strip {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-
-    .badge {
-      border: 1px solid rgba(255,255,255,0.6);
-      border-radius: 999px;
-      padding: 8px 20px;
-      font-size: 0.95rem;
-      backdrop-filter: blur(4px);
-    }
-
-    .cta-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px 36px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      border-radius: 999px;
-      background: linear-gradient(120deg, #ffb85c, #ff7a47);
-      color: var(--white);
-      box-shadow: 0 16px 24px rgba(0,0,0,0.2);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .cta-primary:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 28px rgba(0,0,0,0.3);
-    }
-
-    .cta-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 28px;
-      font-weight: 600;
-      border-radius: 999px;
-      border: 2px solid var(--white);
-      margin-top: 16px;
-      opacity: 0.85;
-      transition: opacity 0.2s ease;
-    }
-
-    .cta-secondary:hover {
-      opacity: 1;
-    }
-
-    section {
-      padding: 72px 16px;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .section-title span {
-      display: inline-block;
-      font-size: 0.92rem;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-    }
-
-    .section-title h2 {
-      margin: 12px 0 0;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-    }
-
-    .stats-grid,
-    .feature-grid,
-    .program-grid,
-    .story-grid,
-    .faq-grid,
-    .step-grid,
-    .media-grid {
-      display: grid;
-      gap: 24px;
-    }
-
-    .stats-grid {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .stat-card {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 32px;
-      text-align: center;
-      box-shadow: 0 12px 28px rgba(16, 39, 83, 0.12);
-    }
-
-    .stat-card h3 {
-      font-size: 2.6rem;
-      margin: 0 0 8px;
-      color: var(--mid-navy);
-    }
-
-    .stat-card p {
-      margin: 0;
-      font-weight: 500;
-      color: #54607a;
-    }
-
-    .feature-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .feature-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border-top: 4px solid var(--gold);
-      box-shadow: 0 10px 24px rgba(16, 39, 83, 0.08);
-    }
-
-    .feature-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: var(--pale-blue);
-      display: grid;
-      place-items: center;
-      font-size: 26px;
-      color: var(--mid-navy);
-    }
-
-    .feature-card h3 {
-      margin: 0;
-      font-size: 1.3rem;
-    }
-
-    .alt-band {
-      background: var(--navy);
-      color: var(--white);
-      text-align: center;
-      padding: 48px 16px;
-    }
-
-    .alt-band h2 {
-      font-size: clamp(1.6rem, 3.5vw, 2.5rem);
-      margin: 0 0 12px;
-    }
-
-    .alt-band p {
-      margin: 0 auto 20px;
-      max-width: 720px;
-      opacity: 0.92;
-    }
-
-    .program-grid {
-      max-width: 1040px;
-      margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-
-    .program-card {
-      background: var(--white);
-      border-radius: 18px;
-      padding: 28px;
-      box-shadow: 0 12px 26px rgba(16, 39, 83, 0.12);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .program-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(140deg, rgba(197, 161, 79, 0.18), transparent 60%);
-      pointer-events: none;
-    }
-
-    .program-card h3 {
-      margin-top: 0;
-      color: var(--mid-navy);
-      font-size: 1.25rem;
-    }
-
-    .program-card ul {
-      padding-left: 20px;
-      margin: 16px 0 0;
-      color: #4a4f5c;
-    }
-
-    .program-card ul li + li {
-      margin-top: 10px;
-    }
-
-    .story-grid {
-      max-width: 1040px;
-      margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
-
-    .story-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 28px;
-      box-shadow: 0 10px 24px rgba(16, 39, 83, 0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .story-meta {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: #56627c;
-      font-size: 0.95rem;
-    }
-
-    .story-badge {
-      padding: 4px 12px;
-      border-radius: 999px;
-      background: var(--pale-blue);
-      color: var(--mid-navy);
-      font-weight: 600;
-      font-size: 0.82rem;
-    }
-
-    .step-grid {
-      max-width: 960px;
-      margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .step-card {
-      position: relative;
-      background: var(--white);
-      border-radius: 18px;
-      padding: 32px 28px 28px;
-      box-shadow: 0 12px 24px rgba(16, 39, 83, 0.09);
-    }
-
-    .step-card span.index {
-      position: absolute;
-      top: -20px;
-      left: 24px;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--gold);
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 10px 18px rgba(197, 161, 79, 0.4);
-    }
-
-    .faq-grid {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      gap: 16px;
-    }
-
-    details {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 20px 28px;
-      box-shadow: 0 8px 20px rgba(16, 39, 83, 0.08);
-    }
-
-    details summary {
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    details[open] summary {
-      color: var(--mid-navy);
-    }
-
-    footer {
-      background: var(--navy);
-      color: rgba(255, 255, 255, 0.8);
-      text-align: center;
-      padding: 48px 16px 64px;
-    }
-
-    footer small {
-      display: block;
-      font-size: 0.82rem;
-      margin-top: 24px;
-      opacity: 0.75;
-    }
-
-    .cta-area {
-      background: var(--pale-blue);
-      padding: 64px 16px;
-      text-align: center;
-    }
-
-    .cta-area p {
-      max-width: 640px;
-      margin: 12px auto 28px;
-      font-weight: 500;
-      color: #44526d;
-    }
-
-    .media-grid {
-      max-width: 960px;
-      margin: 0 auto;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    }
-
-    .media-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 10px 24px rgba(16, 39, 83, 0.1);
-    }
-
-    .media-card h4 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-      color: var(--mid-navy);
-    }
-
-    .media-card p {
-      margin: 0;
-      color: #5a647a;
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 720px) {
-      header.hero {
-        padding: 64px 16px 80px;
-      }
-
-      .cta-primary {
-        width: 100%;
-      }
-
-      .cta-secondary {
-        width: 100%;
-      }
-
-      section {
-        padding: 60px 14px;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>令和の恋愛法則｜無料動画講座</title>
+  <link rel="stylesheet" type="text/css" href="https://arkadia-japan.com/p/format_css?item_id=zKt1IXa0&amp;format=div&amp;form_align=&amp;label_align=&amp;radio_float=&amp;checkbox_float=&amp;label_width=0&amp;input_width=0&amp;theme_name=3_7&amp;ver=3">
+  <link rel="stylesheet" type="text/css" href="https://arkadia-japan.com/p/mobile_css?item_id=zKt1IXa0&amp;format=div&amp;form_align=&amp;label_align=&amp;radio_float=&amp;checkbox_float=&amp;label_width=0&amp;input_width=0&amp;theme_name=3_7&amp;ver=3">
+  <link rel="stylesheet" type="text/css" href="https://arkadia-japan.com/css/form/myasp-ui-form.css?d=20250810224710">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="hero">
-    <div class="badge-strip">
-      <span class="badge">30〜40代男性に特化</span>
-      <span class="badge">成婚コンシェルジュ監修</span>
-      <span class="badge">完全無料のメルマガ講座</span>
+    <div class="hero__overlay"></div>
+    <div class="hero__content container">
+      <p class="hero__tagline">なぜ、勉強や仕事はうまくいってるのに、恋愛だけがうまくいかないのか？</p>
+      <h1 class="hero__title">
+        <span>“モテる男”を目指さず</span>
+        <span>本命彼女から選ばれる</span>
+        <span>『令和の恋愛法則』</span>
+      </h1>
+      <p class="hero__subtitle">あなたらしく自然体で<br>本命女性の『唯一無二』の男になれる<br>誠実な男性専門の恋愛ノウハウとは？</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary js-open-form" href="#form-modal">今すぐセミナーを観る</a>
+        <p class="cta-note">※今すぐ無料で観ることができます</p>
+      </div>
     </div>
-    <h1>誠実だけど恋愛がうまくいかないあなたへ</h1>
-    <p class="lead">仕事も人間関係も真面目に向き合っているのに、恋愛だけ前に進めない。そんな男性が一歩踏み出し、信頼されるパートナーシップを築くための最新ノウハウを、無料メール講座でお届けします。</p>
-    <a class="cta-primary" href="#form">無料でメルマガに登録する</a>
-    <a class="cta-secondary" href="#about">3つの約束を見る</a>
   </header>
 
-  <section id="about" style="background: var(--white);">
-    <div class="section-title">
-      <span>WHY</span>
-      <h2>誠実な男性ほど恋愛で損をしがちな理由</h2>
-    </div>
-    <div class="stats-grid">
-      <div class="stat-card">
-        <h3>68%</h3>
-        <p>真面目な男性が「気持ちを伝えるタイミングがわからない」と回答</p>
+  <main>
+    <section class="section section--lead">
+      <div class="container text-center">
+        <p class="lead-copy">たったの3ステップで<br>簡単に実践できる恋愛講座を<br>今だけ無料で公開中！</p>
+        <a class="btn btn--outline js-open-form" href="#form-modal">今すぐセミナーを観る</a>
       </div>
-      <div class="stat-card">
-        <h3>3.7倍</h3>
-        <p>丁寧さを重視しすぎてチャンスを逃した経験がある割合</p>
-      </div>
-      <div class="stat-card">
-        <h3>92%</h3>
-        <p>恋愛よりも仕事を優先して後悔したという声</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section style="background: var(--pale-blue);">
-    <div class="section-title">
-      <span>PROMISE</span>
-      <h2>誠実さを強みに変えるための3つの約束</h2>
-    </div>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🧭</div>
-        <h3>価値観を言語化する</h3>
-        <p>恋愛で最も伝わりにくいのが「安心感」。本講座では、自分の価値観と未来像を整理し、自然に伝えるテンプレートを提供します。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🗣️</div>
-        <h3>好意の伝え方を磨く</h3>
-        <p>距離を縮める会話例やLINEの言葉選びを実例で紹介。誠実さを損なわずに、相手の心に響くコミュニケーションを習得できます。</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤝</div>
-        <h3>信頼を深める行動指針</h3>
-        <p>初デートから交際の移行まで、迷わず動けるチェックリストを提供。感情の揺れに振り回されず、リードできる男性を目指します。</p>
-      </div>
-    </div>
-  </section>
+    <section class="section section--program" id="program">
+      <div class="container">
+        <div class="section-heading">
+          <h2>【無料動画講座】7日間で学ぶ『THE ONLY ONE』メソッド</h2>
+          <p>巷のモテテクに疲れた、誠実なあなたへ。</p>
+          <p>「優しさ」を“選ばれる理由”に変える、全7回の集中プログラムです。</p>
+        </div>
 
-  <section class="alt-band">
-    <h2>2000人以上の恋愛相談から導き出した成功プロセス</h2>
-    <p>婚活現場で成婚をサポートしてきたコンシェルジュと、恋愛心理の専門家が共同開発。再現性の高いステップで、自信と余裕を備えたデートが実現します。</p>
-    <a class="cta-primary" href="#form">今すぐ無料で受講する</a>
-  </section>
-
-  <section style="background: var(--white);">
-    <div class="section-title">
-      <span>PROGRAM</span>
-      <h2>登録すると届く7日間の無料メール講座</h2>
-    </div>
-    <div class="program-grid">
-      <div class="program-card">
-        <h3>DAY1｜誠実な男性が最初に整えるべき心構え</h3>
-        <ul>
-          <li>仕事モードから恋愛モードへスイッチする思考法</li>
-          <li>女性が求める「安心感」の正体を理解する</li>
-          <li>1週間で変化を起こすための習慣シート</li>
-        </ul>
-      </div>
-      <div class="program-card">
-        <h3>DAY3｜距離を縮めるコミュニケーション戦略</h3>
-        <ul>
-          <li>初対面〜3回目デートまでの会話シナリオ</li>
-          <li>LINEで既読スルーを防ぐ送信ルール</li>
-          <li>誠実さとリード力を両立させる振る舞い</li>
-        </ul>
-      </div>
-      <div class="program-card">
-        <h3>DAY5｜告白前の見極めポイント</h3>
-        <ul>
-          <li>相手の温度感を図るチェックリスト</li>
-          <li>自然に未来の話を引き出す質問テンプレ</li>
-          <li>成功率を高める当日の段取り</li>
-        </ul>
-      </div>
-      <div class="program-card">
-        <h3>DAY7｜交際後も愛される男性になる方法</h3>
-        <ul>
-          <li>信頼を深めるフォローアップ習慣</li>
-          <li>不安を与えない約束の取り方</li>
-          <li>仕事と恋愛を両立する時間設計術</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section style="background: var(--light-gold);">
-    <div class="section-title">
-      <span>VOICE</span>
-      <h2>メール講座で変化を実感した受講生の声</h2>
-    </div>
-    <div class="story-grid">
-      <div class="story-card">
-        <span class="story-badge">35歳 会社員</span>
-        <p>「告白が怖くていつも友達止まりでしたが、講座で教わったステップでタイミングを掴めました。彼女から『安心できる』と言ってもらえたのが嬉しかったです。」</p>
-        <div class="story-meta">
-          <strong>東京都 / Yさん</strong>
+        <div class="episode-grid">
+          <article class="episode-card">
+            <h3>第1話：【暴露】モテる男を目指すほど恋愛がうまくいかない衝撃の理由</h3>
+            <ul>
+              <li>今、マッチングアプリがチャンスな理由とは</li>
+              <li>巷の恋愛テクニックが、あなたの魅力を逆に消してしまう理由とは</li>
+              <li>ライバル不在の土俵で、「あなたじゃなきゃダメ」と求められる戦略とは</li>
+              <li>女性が本命を選ぶ時に無意識に求める、たった一つの“決定的な要素”とは</li>
+              <li>誰かのモノマネではない、あなただけの“本音”が最強の武器にする方法</li>
+            </ul>
+          </article>
+          <article class="episode-card">
+            <h3>第2話：センス不要！科学的に「唯一無二の魅力」を構築する外見の磨き方</h3>
+            <ul>
+              <li>9割の男性が知らない、第一印象の0.5秒で決まる残酷な現実</li>
+              <li>イケメンじゃなくても本命女性に選ばれる外見の特徴</li>
+              <li>ファッションで“流行”や“オシャレ”を追ってはいけない理由とは</li>
+              <li>センスのいらない唯一無二の外見改善方法</li>
+              <li>マッチングアプリの反応が10倍に跳ね上がった、コンサル生の外見改善事例</li>
+            </ul>
+          </article>
+          <article class="episode-card">
+            <h3>第3話：恋愛経験が少ない男でも強みを活かして月に10人以上の女性とデートできる出会い戦略</h3>
+            <ul>
+              <li>普通にマッチングアプリをやっても出会えない残酷な理由とは</li>
+              <li>美人な女性ほど、実は「誠実な男性」に飢えている理由とは</li>
+              <li>ライバル不在の市場で、あなたの強みを活かして“1人勝ちできる”場所の見つけ方</li>
+              <li>あなたの誠実さを求める女性が集まる、おすすめマッチングアプリとは</li>
+              <li>あなたの“人柄”が伝わるだけで、女性から会いたいと言われるプロフ作成術</li>
+            </ul>
+          </article>
+          <article class="episode-card">
+            <h3>第4話：トーク力0でもタイプの女性から「また会いたい」と虜にさせるデート会話術</h3>
+            <ul>
+              <li>女性との会話に「面白さ」やトーク力がいらない理由とは</li>
+              <li>初対面でも心を開かせるNLP応用会話術</li>
+              <li>女性の心の奥深くにアプローチする「深層心理コミュニケーション」の秘密</li>
+              <li>女性が「私のこと、なんでそんなにわかるの？」と驚く、魔法の質問スキル</li>
+              <li>相手の自己重要感を満たし、「あなたともっと話したい」と思わせる会話の極意</li>
+            </ul>
+          </article>
+          <article class="episode-card">
+            <h3>第5話：恋愛経験少なくてもゼロから本命彼女を作る『けいじ式ロードマップ』</h3>
+            <ul>
+              <li>なぜ、優れたノウハウを知っても9割の人が挫折するのか？</li>
+              <li>僕が1000万円以上を投じて身につけた成功法則の全貌を公開</li>
+              <li>ロジカルに恋愛を攻略する秘密の奥義「恋愛の方程式」とは</li>
+              <li>最小限の努力で、最短最速で本命彼女を作るための戦略とは</li>
+              <li>他の業界では当たり前なのに、なぜか恋愛業界では誰も教えない成功法則</li>
+            </ul>
+          </article>
+          <article class="episode-card">
+            <h3>第6話：【9割の男が変われない真の理由】美女にアプローチできるようになる 『けいじ式マインド理論』</h3>
+            <ul>
+              <li>好きな女性の前だと緊張してしまう現状維持システムをぶっ壊す方法</li>
+              <li>自信がなくてコンプレックスまみれの男が一瞬で自分を変える方法</li>
+              <li>あなたの成功を無意識に妨害する真の敵とは</li>
+              <li>1人では変われない男でも成功できる環境の条件とは</li>
+              <li>大きな目標を着実に達成する行動科学理論</li>
+            </ul>
+          </article>
+          <article class="episode-card">
+            <h3>第7話：本命女性と付き合う確率を100％にするたった1つの方法</h3>
+            <ul>
+              <li>あなたの失敗を成功への最短ルートに変える「最終奥義」</li>
+              <li>モテる友人のアドバイスを絶対に聞いてはいけない理由</li>
+              <li>同じ失敗を無限に繰り返してしまう無限地獄のループを抜け出す方法</li>
+              <li>なぜ、僕のコンサルでは「美女コンサルタント」を揃えているのか？</li>
+              <li>恋愛コンサルティングで彼女ゲットや結婚する男が続出している秘密</li>
+            </ul>
+          </article>
         </div>
       </div>
-      <div class="story-card">
-        <span class="story-badge">39歳 公務員</span>
-        <p>「真剣になりすぎて空回りしていた自分に気づきました。価値観シートのおかげで、落ち着いて本音を伝えられるようになりました。」</p>
-        <div class="story-meta">
-          <strong>神奈川県 / Mさん</strong>
+    </section>
+
+    <section class="section section--cta" id="cta">
+      <div class="container text-center">
+        <p class="cta-label">＼大好評につき、配布は予告なく終了します／</p>
+        <a class="btn btn--primary btn--large js-open-form" href="#form-modal">今すぐセミナーを観る</a>
+        <p class="cta-note">※今すぐ無料で観ることができます</p>
+      </div>
+    </section>
+
+    <section class="section section--profile" id="profile">
+      <div class="container">
+        <div class="section-heading">
+          <h2>けいじ｜「いい人止まり」を“唯一無二の魅力”に変える恋愛戦略家</h2>
+        </div>
+        <div class="profile-body">
+          <p>26年間「いい人」止まりの状態から独学で恋愛ノウハウを構築。</p>
+          <p>アプリやストリートで、250人以上の女性を口説くことに成功した後、1人の愛する女性と出会い結婚。</p>
+          <p>圧倒的な実践経験と脳科学・心理学を融合し「誠実さや優しさが武器になる」独自メソッド『THE ONLY ONE』を確立。</p>
+          <ul class="profile-results">
+            <li>某有名アイドルとの交際を実現（30代・自営業）</li>
+            <li>バツイチから20代の美人女性と結婚（30代・公務員）</li>
+            <li>童貞から半年で10人以上の女性と関係構築、理想の彼女をGET（25歳・会社員）</li>
+          </ul>
+          <p>など、劇的な成果報告が毎月のように届いている。</p>
+          <p>ミッションは「誠実な人が報われる社会を創る」こと。</p>
         </div>
       </div>
-      <div class="story-card">
-        <span class="story-badge">33歳 エンジニア</span>
-        <p>「仕事優先で恋愛は後回しでしたが、習慣チェックのおかげで連絡を取り続けることができ、交際3ヶ月目にプロポーズできました。」</p>
-        <div class="story-meta">
-          <strong>愛知県 / Kさん</strong>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section style="background: var(--white);">
-    <div class="section-title">
-      <span>FLOW</span>
-      <h2>登録後のシンプルな3ステップ</h2>
+  <footer class="footer">
+    <div class="container text-center">
+      <p>© 令和の恋愛法則</p>
     </div>
-    <div class="step-grid">
-      <div class="step-card">
-        <span class="index">01</span>
-        <h3>フォームからメールアドレスを登録</h3>
-        <p>あなたのメールアドレスだけでOK。迷惑メール防止のため、登録後すぐの確認メールで受信設定をご案内します。</p>
-      </div>
-      <div class="step-card">
-        <span class="index">02</span>
-        <h3>毎朝届く講座を読んで行動</h3>
-        <p>1通3分で読める構成。行動ワークシートを活用しながら、デート前の準備や会話の練習ができます。</p>
-      </div>
-      <div class="step-card">
-        <span class="index">03</span>
-        <h3>LINE相談で疑問を解決</h3>
-        <p>受講者限定のLINEにて週1回の無料質問タイムを実施。実際のメッセージ添削もサポートします。</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="background: var(--pale-blue);">
-    <div class="section-title">
-      <span>SUPPORT</span>
-      <h2>登録者限定で受け取れるプレゼント</h2>
-    </div>
-    <div class="media-grid">
-      <div class="media-card">
-        <h4>初デート完全チェックリスト</h4>
-        <p>服装・話題・時間配分まで、具体的なリストで当日の不安をゼロにします。</p>
-      </div>
-      <div class="media-card">
-        <h4>LINEテンプレ50選</h4>
-        <p>距離を詰める返信例から、断りづらい誘いをスマートに断る例まで収録。</p>
-      </div>
-      <div class="media-card">
-        <h4>モチベーション音声講座</h4>
-        <p>忙しいビジネスパーソン向けに5分で聞ける音声コンテンツを配布。</p>
-      </div>
-      <div class="media-card">
-        <h4>月1オンライン勉強会</h4>
-        <p>恋愛心理の専門家がリアルな悩みに答えるライブ配信に無料招待します。</p>
-      </div>
-    </div>
-  </section>
-
-  <section style="background: var(--white);">
-    <div class="section-title">
-      <span>Q&A</span>
-      <h2>よくあるご質問</h2>
-    </div>
-    <div class="faq-grid">
-      <details>
-        <summary>恋愛初心者でも内容についていけますか？</summary>
-        <p>はい、誰でも取り組めるよう1通ごとに行動課題と説明をセットにしています。基礎から解説するので、ブランクが長い方でも安心して学べます。</p>
-      </details>
-      <details>
-        <summary>既に婚活サービスを利用していますが併用は可能ですか？</summary>
-        <p>もちろん可能です。むしろ、婚活の現場で起こりやすいすれ違いを防ぐための具体的なアドバイスが豊富なので、効果的に活用いただけます。</p>
-      </details>
-      <details>
-        <summary>営業や勧誘のメールが増えることはありませんか？</summary>
-        <p>登録いただいたメールアドレスは講座の配信とご案内にのみ使用します。無断で第三者に提供することはありません。解除もワンクリックで可能です。</p>
-      </details>
-    </div>
-  </section>
-
-  <section class="cta-area" id="form">
-    <div class="section-title" style="margin-bottom: 24px;">
-      <span>ENTRY</span>
-      <h2>今すぐ無料で登録して、誠実な恋愛力を手に入れる</h2>
-    </div>
-    <p>下記フォームからご登録いただくと、初回メール「誠実さを武器に変える3つのステップ」が1分以内に届きます。迷ったまま時間が過ぎる前に、理想の関係へ動き出しましょう。</p>
-    <form style="max-width: 520px; margin: 0 auto; display: grid; gap: 16px;">
-      <input type="text" placeholder="お名前（ニックネーム可）" required style="padding: 16px 20px; border-radius: 999px; border: 1px solid rgba(16, 39, 83, 0.22); font-size: 1rem;">
-      <input type="email" placeholder="メールアドレス" required style="padding: 16px 20px; border-radius: 999px; border: 1px solid rgba(16, 39, 83, 0.22); font-size: 1rem;">
-      <button type="submit" class="cta-primary" style="width: 100%;">無料メルマガに申し込む</button>
-      <small style="color: #54607a;">※迷惑メール設定で「@example.jp」からのメールを受信できるよう設定をお願いします。</small>
-    </form>
-  </section>
-
-  <footer>
-    <div>
-      <strong>恋愛コンシェルジュ オプティマイズ</strong>
-      <p>〒000-0000 東京都中央区〇〇 1-2-3　TEL：03-0000-0000（平日10:00〜18:00）</p>
-      <p>発行責任者：恋愛戦略プランナー 佐藤真</p>
-    </div>
-    <small>© 2024 Renai Optimize. All rights reserved.</small>
   </footer>
+
+  <div class="cta-fixed" id="cta3">
+    <div class="cta-fixed__inner">
+      <div class="cta-fixed__copy">
+        <p class="cta-fixed__headline">公開まで残り…<span id="countdown-hours">00</span>時間<span id="countdown-minutes">00</span>分<span id="countdown-seconds">00</span>秒</p>
+        <p class="cta-fixed__note">※今すぐ無料で観ることができます</p>
+      </div>
+      <a class="btn btn--contrast js-open-form" href="#form-modal">今すぐセミナーを観る</a>
+    </div>
+  </div>
+
+  <div class="form-modal" id="form-modal" aria-hidden="true">
+    <div class="form-modal__overlay" data-modal-close="true"></div>
+    <div class="form-modal__content" role="dialog" aria-modal="true" aria-labelledby="form-modal-title">
+      <button class="form-modal__close" type="button" aria-label="閉じる" data-modal-close="true">×</button>
+      <div class="form-modal__body">
+        <span class="form-modal__badge">FREE SEMINAR</span>
+        <p class="form-modal__intro">誠実な男性が“唯一無二の存在”になるための<strong>7日間集中プログラム</strong>に今すぐ参加しよう。</p>
+        <div class="content_title" id="form-modal-title">
+          <h2>THE ONLY ONE 7話型動画講座</h2>
+        </div>
+        <div class="content_form">
+          <form action="https://arkadia-japan.com/p/r/zKt1IXa0" enctype="multipart/form-data" id="UserItemForm" class="myForm" method="post" accept-charset="utf-8">
+            <input type="hidden" name="_method" value="POST">
+
+            <div class="input text input_unit required">
+              <div class="my_column my_left">
+                <div class="label_frame">
+                  <label for="Username1" class="form_input_label required">お名前</label>
+                </div>
+              </div>
+              <div class="my_column my_right">
+                <input name="data[User][name1]" id="Username1" value="" class="required" type="text">
+              </div>
+            </div>
+
+            <div class="input text input_unit required">
+              <div class="my_column my_left">
+                <div class="label_frame">
+                  <label for="Usermail" class="form_input_label required">メールアドレス</label>
+                </div>
+              </div>
+              <div class="my_column my_right">
+                <input name="data[User][mail]" id="Usermail" value="" class="required" type="text">
+              </div>
+            </div>
+
+            <div class="submit form_input_submit">
+              <input type="submit" value="確認する">
+            </div>
+
+            <input type="hidden" id="server_url" value="https://arkadia-japan.com/">
+            <input type="hidden" name="data[User][referer_form_url]" value="" class="UserRefererFormUrl">
+            <input type="hidden" name="data[User][referer_url]" value="" class="UserRefererUrl">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://arkadia-japan.com/js/validation.js?d=20250930210214"></script>
 </body>
 </html>
