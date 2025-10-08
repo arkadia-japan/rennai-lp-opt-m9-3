@@ -163,6 +163,11 @@ a {
   color: #1d1d1d;
 }
 
+.btn--line {
+  background: linear-gradient(120deg, #4ad162, #1aa135);
+  color: #fff;
+}
+
 .btn--outline {
   position: relative;
   overflow: hidden;
@@ -258,6 +263,201 @@ a {
 .section--cta {
   background: var(--navy);
   color: var(--white);
+}
+
+.thanks-page {
+  background: linear-gradient(180deg, rgba(231, 240, 254, 0.9), rgba(247, 241, 230, 0.9));
+}
+
+.thanks-hero {
+  padding-top: clamp(80px, 16vh, 140px);
+  padding-bottom: clamp(64px, 12vh, 120px);
+  color: var(--navy-dark);
+}
+
+.thanks-hero .container {
+  max-width: 720px;
+}
+
+.thanks-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: rgba(11, 45, 99, 0.12);
+  color: var(--navy);
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.thanks-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4.4vw, 36px);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.thanks-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 24px;
+  margin: 0 auto 24px;
+  border-radius: 18px;
+  background: var(--white);
+  box-shadow: 0 20px 40px rgba(11, 45, 99, 0.12);
+}
+
+.thanks-countdown__label {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.thanks-countdown__timer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-display);
+}
+
+.thanks-countdown__unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 76px;
+}
+
+.thanks-countdown__number {
+  display: block;
+  font-size: clamp(32px, 7vw, 48px);
+  color: var(--navy);
+  letter-spacing: 0.08em;
+}
+
+.thanks-countdown__text {
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: rgba(11, 45, 99, 0.7);
+}
+
+.thanks-countdown__separator {
+  font-size: clamp(28px, 6vw, 40px);
+  color: var(--gold);
+}
+
+.thanks-countdown.is-finished {
+  background: rgba(248, 180, 90, 0.12);
+}
+
+.thanks-hero__lead {
+  font-size: clamp(17px, 2.6vw, 20px);
+  line-height: 1.75;
+  margin: 0 0 24px;
+}
+
+.thanks-hero__lead span {
+  color: #1aa135;
+  font-weight: 700;
+}
+
+.thanks-hero__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.thanks-hero__arrow {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.5em;
+  color: var(--orange-dark);
+}
+
+.thanks-hero__note {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(11, 45, 99, 0.8);
+}
+
+.thanks-steps {
+  background: var(--white);
+}
+
+.thanks-steps__title {
+  font-family: var(--font-display);
+  text-align: center;
+  color: var(--navy);
+  font-size: clamp(24px, 3.4vw, 30px);
+  margin: 0 0 40px;
+}
+
+.thanks-steps__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.thanks-step {
+  background: var(--lighter-blue);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 18px 36px rgba(11, 45, 99, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.thanks-step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  padding: 6px 0;
+  border-radius: 999px;
+  background: rgba(11, 45, 99, 0.12);
+  color: var(--navy);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.thanks-step__heading {
+  font-size: 18px;
+  color: var(--navy-dark);
+  margin: 0;
+}
+
+.thanks-step__text {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.thanks-reminder {
+  background: linear-gradient(120deg, rgba(11, 45, 99, 0.95), rgba(11, 45, 99, 0.85));
+  color: var(--white);
+}
+
+.thanks-reminder .container {
+  max-width: 720px;
+}
+
+.thanks-reminder__title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.2vw, 32px);
+  margin: 0 0 24px;
+  line-height: 1.5;
+}
+
+.thanks-reminder__text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin: 0 0 32px;
 }
 
 .section--cta .cta-label {
@@ -699,6 +899,19 @@ body.modal-open {
     padding: 10px 12px;
     margin-bottom: 14px;
   }
+
+  .thanks-countdown {
+    padding: 20px;
+    gap: 8px;
+  }
+
+  .thanks-countdown__unit {
+    min-width: 68px;
+  }
+
+  .thanks-step {
+    padding: 24px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -740,5 +953,18 @@ body.modal-open {
   .form-modal .myForm .form_input_submit input[type='submit'] {
     font-size: 16px;
     letter-spacing: 0.08em;
+  }
+
+  .thanks-hero__badge {
+    font-size: 12px;
+    padding: 8px 18px;
+  }
+
+  .thanks-countdown__unit {
+    min-width: 60px;
+  }
+
+  .thanks-hero__arrow {
+    letter-spacing: 0.4em;
   }
 }
