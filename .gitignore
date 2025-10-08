@@ -2,6 +2,7 @@
 *.pdf
 *.png
 *.jpg
+!profile.jpg
 *.jpeg
 *.gif
 *.mp4
