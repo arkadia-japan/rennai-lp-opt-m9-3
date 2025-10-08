@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const secondsEl = document.getElementById('countdown-seconds');
 
   if (hoursEl && minutesEl && secondsEl) {
-    const storageKey = 'rennaiCountdownDeadline';
-    const fallbackDurationHours = 48;
+    const storageKey = 'rennaiCountdownDeadlineV2';
+    const fallbackDurationHours = 12;
     const now = Date.now();
     let deadline = now + fallbackDurationHours * 60 * 60 * 1000;
 
