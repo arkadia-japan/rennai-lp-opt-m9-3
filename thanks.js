@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const minutesSetting = parseInt(countdown.dataset.countdownMinutes || '10', 10);
-  const durationMs = Number.isNaN(minutesSetting) ? 10 * 60 * 1000 : minutesSetting * 60 * 1000;
+  const minutesSetting = parseInt(countdown.dataset.countdownMinutes || '30', 10);
+  const durationMs = Number.isNaN(minutesSetting) ? 30 * 60 * 1000 : minutesSetting * 60 * 1000;
   const storageKey = `rennaiThanksCountdownDeadline:${window.location.pathname}`;
   const now = Date.now();
 
