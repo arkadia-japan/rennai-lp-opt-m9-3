@@ -13,6 +13,7 @@
   --gray: #444;
   --white: #fff;
   --max-width: 1080px;
+  --fixed-cta-spacing: 140px;
 }
 
 * {
@@ -26,6 +27,7 @@ body {
   background-color: var(--lighter-blue);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  padding-bottom: var(--fixed-cta-spacing);
 }
 
 a {
@@ -872,6 +874,10 @@ body.modal-open {
 }
 
 @media (min-width: 768px) {
+  :root {
+    --fixed-cta-spacing: 120px;
+  }
+
   .profile-body {
     grid-template-columns: 240px 1fr;
     align-items: center;
