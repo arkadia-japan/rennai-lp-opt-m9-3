@@ -273,7 +273,44 @@ a {
 
 .episode-card ul {
   margin: 0;
-  padding-left: 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.episode-card li,
+.profile-results li {
+  position: relative;
+  padding-left: 40px;
+  line-height: 1.75;
+}
+
+.episode-card li::before,
+.profile-results li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.4em;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, rgba(248, 180, 90, 0.15), rgba(240, 132, 44, 0.24));
+  border: 2px solid rgba(240, 132, 44, 0.65);
+  box-shadow: 0 6px 16px rgba(11, 45, 99, 0.12);
+}
+
+.episode-card li::after,
+.profile-results li::after {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0.58em;
+  width: 6px;
+  height: 12px;
+  border-right: 2px solid var(--navy);
+  border-bottom: 2px solid var(--navy);
+  transform: rotate(45deg);
 }
 
 .section--cta {
@@ -521,7 +558,10 @@ a {
 
 .profile-results {
   margin: 16px 0;
-  padding-left: 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
 }
 
 .profile-text .profile-results {
