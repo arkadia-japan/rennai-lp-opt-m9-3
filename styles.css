@@ -236,6 +236,77 @@ a {
   clip-path: polygon(0 0, 0 100%, 100% 0);
 }
 
+.program-intro {
+  background: linear-gradient(135deg, rgba(231, 240, 254, 0.85), rgba(247, 241, 230, 0.85));
+  border: 1px solid rgba(11, 45, 99, 0.1);
+  border-radius: 24px;
+  padding: clamp(28px, 5vw, 48px);
+  margin: 0 0 clamp(36px, 6vw, 56px);
+  box-shadow: 0 18px 38px rgba(5, 33, 80, 0.08);
+}
+
+.program-intro h3 {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.4vw, 30px);
+  color: var(--navy);
+  text-align: center;
+  margin: 0 0 24px;
+  letter-spacing: 0.04em;
+}
+
+.program-intro p {
+  margin: 0 0 16px;
+  line-height: 1.8;
+}
+
+.program-intro ol {
+  counter-reset: program-step;
+  list-style: none;
+  margin: clamp(28px, 5vw, 40px) 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.program-intro li {
+  position: relative;
+  padding: 24px 24px 24px 112px;
+  background: var(--white);
+  border-radius: 18px;
+  border: 1px solid rgba(11, 45, 99, 0.08);
+  box-shadow: 0 16px 32px rgba(5, 33, 80, 0.06);
+}
+
+.program-intro li::before {
+  counter-increment: program-step;
+  content: "STEP " counter(program-step);
+  position: absolute;
+  left: 24px;
+  top: 22px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--navy);
+  background: linear-gradient(135deg, rgba(248, 180, 90, 0.28), rgba(240, 132, 44, 0.46));
+  border: 2px solid rgba(240, 132, 44, 0.6);
+  box-shadow: 0 10px 20px rgba(11, 45, 99, 0.1);
+}
+
+.program-intro strong {
+  display: block;
+  font-size: clamp(17px, 2.4vw, 19px);
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+
 .episode-grid {
   display: grid;
   gap: 24px;
@@ -939,6 +1010,24 @@ body.modal-open {
     padding: 96px 24px 80px;
   }
 
+  .program-intro {
+    padding: 28px 24px 32px;
+    margin-bottom: 40px;
+  }
+
+  .program-intro li {
+    padding: 22px 20px 22px 104px;
+  }
+
+  .program-intro li::before {
+    left: 18px;
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    font-size: 12px;
+    top: 20px;
+  }
+
   .cta-fixed__inner {
     flex-direction: column;
     align-items: center;
@@ -1008,6 +1097,23 @@ body.modal-open {
   .form-modal .myForm .input_unit {
     padding: 8px 10px;
     gap: 6px;
+  }
+
+  .program-intro {
+    padding: 24px 18px 28px;
+  }
+
+  .program-intro li {
+    padding: 20px 18px 20px 92px;
+  }
+
+  .program-intro li::before {
+    left: 16px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    font-size: 11px;
+    top: 18px;
   }
 
   .form-modal .myForm .form_input_submit input[type='submit'] {
