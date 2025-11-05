@@ -148,4 +148,174 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const pointerFine = window.matchMedia('(pointer: fine)');
+  const tiltElements = Array.prototype.slice.call(document.querySelectorAll('[data-tilt]'));
+  const revealElements = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  const tiltCleanups = new Map();
+  let revealObserver = null;
+
+  const attachMediaListener = (mediaQuery, handler) => {
+    if (typeof mediaQuery.addEventListener === 'function') {
+      mediaQuery.addEventListener('change', handler);
+    } else if (typeof mediaQuery.addListener === 'function') {
+      mediaQuery.addListener(handler);
+    }
+  };
+
+  const resetTiltStyles = (element) => {
+    element.style.setProperty('--tilt-rotate-x', '0deg');
+    element.style.setProperty('--tilt-rotate-y', '0deg');
+    element.style.setProperty('--tilt-translate-z', '0px');
+    element.removeAttribute('data-tilt-active');
+  };
+
+  const enableTilt = () => {
+    if (!tiltElements.length || !pointerFine.matches || prefersReducedMotion.matches) {
+      return;
+    }
+
+    tiltElements.forEach((element) => {
+      if (tiltCleanups.has(element)) {
+        return;
+      }
+
+      const maxTilt = Number(element.dataset.tiltMax) || 12;
+      const depth = Number(element.dataset.tiltDepth) || 22;
+      let rafId = null;
+
+      const onPointerMove = (event) => {
+        if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== 'pen') {
+          return;
+        }
+
+        const rect = element.getBoundingClientRect();
+        const pointerX = event.clientX;
+        const pointerY = event.clientY;
+
+        if (pointerX == null || pointerY == null) {
+          return;
+        }
+
+        const xRatio = Math.min(Math.max((pointerX - rect.left) / rect.width, 0), 1);
+        const yRatio = Math.min(Math.max((pointerY - rect.top) / rect.height, 0), 1);
+
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+
+        rafId = requestAnimationFrame(() => {
+          const tiltX = (0.5 - yRatio) * maxTilt;
+          const tiltY = (xRatio - 0.5) * maxTilt;
+
+          element.style.setProperty('--tilt-rotate-x', `${tiltX.toFixed(2)}deg`);
+          element.style.setProperty('--tilt-rotate-y', `${tiltY.toFixed(2)}deg`);
+          element.style.setProperty('--tilt-translate-z', `${depth}px`);
+          element.setAttribute('data-tilt-active', 'true');
+          rafId = null;
+        });
+      };
+
+      const onPointerLeave = () => {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        resetTiltStyles(element);
+      };
+
+      element.addEventListener('pointermove', onPointerMove);
+      element.addEventListener('pointerleave', onPointerLeave);
+      element.addEventListener('pointercancel', onPointerLeave);
+
+      tiltCleanups.set(element, () => {
+        element.removeEventListener('pointermove', onPointerMove);
+        element.removeEventListener('pointerleave', onPointerLeave);
+        element.removeEventListener('pointercancel', onPointerLeave);
+        resetTiltStyles(element);
+      });
+    });
+  };
+
+  const disableTilt = () => {
+    tiltCleanups.forEach((cleanup) => {
+      cleanup();
+    });
+    tiltCleanups.clear();
+  };
+
+  const showAllRevealElements = () => {
+    revealElements.forEach((element) => {
+      element.classList.add('is-revealed');
+      element.style.removeProperty('--reveal-delay');
+    });
+  };
+
+  const enableReveal = () => {
+    if (!revealElements.length || prefersReducedMotion.matches) {
+      showAllRevealElements();
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      showAllRevealElements();
+      return;
+    }
+
+    if (revealObserver) {
+      revealObserver.disconnect();
+    }
+
+    revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          entry.target.style.removeProperty('--reveal-delay');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -12%' });
+
+    revealElements.forEach((element, index) => {
+      if (element.classList.contains('is-revealed')) {
+        return;
+      }
+
+      const customDelay = Number(element.dataset.revealDelay);
+      const delay = Number.isFinite(customDelay) ? customDelay : Math.min(index * 90, 420);
+      element.style.setProperty('--reveal-delay', `${delay}ms`);
+      revealObserver.observe(element);
+    });
+  };
+
+  const disableReveal = () => {
+    if (revealObserver) {
+      revealObserver.disconnect();
+      revealObserver = null;
+    }
+    revealElements.forEach((element) => {
+      element.style.removeProperty('--reveal-delay');
+    });
+  };
+
+  const applyMotionPreferences = () => {
+    disableTilt();
+
+    if (prefersReducedMotion.matches) {
+      disableReveal();
+      showAllRevealElements();
+      return;
+    }
+
+    enableTilt();
+    enableReveal();
+  };
+
+  if (tiltElements.length || revealElements.length) {
+    applyMotionPreferences();
+    attachMediaListener(prefersReducedMotion, applyMotionPreferences);
+    attachMediaListener(pointerFine, applyMotionPreferences);
+    window.addEventListener('pagehide', disableTilt);
+  }
 });
