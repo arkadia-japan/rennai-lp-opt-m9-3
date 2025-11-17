@@ -1,0 +1,1754 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE ONLY ONE｜個別相談会ランディングページ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0c2660;
+      --navy-dark: #061539;
+      --sky: #eaf3ff;
+      --gold: #c6a24a;
+      --gold-light: #e9d28f;
+      --sand: #f8f1e1;
+      --beige: #f2ebdc;
+      --ivory: #fdfbf5;
+      --gray: #f4f5f7;
+      --text: #1f2440;
+      --subtext: #4d5273;
+      --white: #ffffff;
+      --max-width: min(1080px, 100vw);
+      --floating-footer-offset: 0px;
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+      --tilt-depth: 32px;
+      --card-float-distance: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      font-feature-settings: 'palt';
+      color: var(--text);
+      line-height: 1.9;
+      font-size: clamp(16px, 1.2vw, 19px);
+      background: linear-gradient(180deg, var(--ivory), var(--gray));
+      scroll-behavior: smooth;
+      padding-bottom: calc(var(--floating-footer-offset) + env(safe-area-inset-bottom));
+      overflow-x: hidden;
+    }
+
+    p, li {
+      font-size: 1.05em;
+      letter-spacing: 0.015em;
+      color: var(--text);
+    }
+
+    strong {
+      color: var(--navy-dark);
+      font-weight: 700;
+    }
+
+    .lead-paragraphs p,
+    .card p,
+    .voice-card p,
+    .profile-block p,
+    .profile-block li,
+    .faq-item p {
+      font-size: 1.1em;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3, h4 { font-weight: 700; line-height: 1.4; }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding-inline: clamp(20px, 6vw, 48px);
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(6, 21, 57, 0.82), rgba(6, 21, 57, 1));
+      padding: 0 0 clamp(80px, 12vw, 120px);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      perspective: 1600px;
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(0);
+      opacity: 0.32;
+      pointer-events: none;
+      transform-style: preserve-3d;
+      animation: hero-orb-drift 24s ease-in-out infinite;
+      will-change: transform, opacity;
+      z-index: 0;
+    }
+
+    .hero-orb--left {
+      width: clamp(160px, 28vw, 320px);
+      height: clamp(160px, 28vw, 320px);
+      left: clamp(-120px, -12vw, -60px);
+      top: clamp(40px, 10vw, 120px);
+      background: radial-gradient(circle at 30% 30%, rgba(233, 210, 143, 0.35), rgba(12, 38, 96, 0.02) 65%);
+    }
+
+    .hero-orb--right {
+      width: clamp(140px, 24vw, 280px);
+      height: clamp(140px, 24vw, 280px);
+      right: clamp(-90px, -8vw, -40px);
+      bottom: clamp(-40px, -6vw, 20px);
+      background: radial-gradient(circle at 70% 40%, rgba(198, 162, 74, 0.28), rgba(12, 38, 96, 0.05) 70%);
+      animation-delay: -7s;
+    }
+
+    @keyframes hero-orb-drift {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.28; }
+      25% { transform: translate3d(12px, -18px, 0) scale(1.06); opacity: 0.4; }
+      50% { transform: translate3d(-10px, 14px, 0) scale(0.94); opacity: 0.26; }
+      75% { transform: translate3d(18px, 6px, 0) scale(1.08); opacity: 0.36; }
+    }
+
+    .hero-visual { margin: 0; width: 100%; }
+    .hero-visual img { width: 100%; height: auto; display: block; }
+
+    .hero-inner {
+      position: relative;
+      width: 100%;
+      max-width: var(--max-width);
+      margin: clamp(32px, 7vw, 72px) auto 0;
+      display: flex;
+      justify-content: center;
+      padding-inline: clamp(20px, 6vw, 48px);
+      z-index: 1;
+    }
+
+    .hero-panel {
+      width: 100%;
+      max-width: 760px;
+      background: var(--white);
+      border-radius: 28px;
+      padding: clamp(36px, 6vw, 60px) clamp(28px, 6vw, 64px);
+      box-shadow: 0 26px 54px rgba(6, 21, 57, 0.25);
+      display: grid;
+      gap: 24px;
+      justify-items: center;
+      text-align: center;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: translateZ(calc(var(--tilt-depth) * 0.25)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.6s ease;
+      will-change: transform, box-shadow;
+      pointer-events: auto;
+    }
+
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      inset: -12%;
+      background: radial-gradient(circle at top, rgba(198, 162, 74, 0.18), transparent 55%);
+      filter: blur(12px);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      z-index: -1;
+    }
+
+    .hero-panel--active {
+      transition-duration: 0.25s;
+      box-shadow: 0 28px 70px rgba(6, 21, 57, 0.32);
+    }
+
+    .hero-panel--active::before {
+      opacity: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(12, 38, 96, 0.18);
+      background: rgba(12, 38, 96, 0.06);
+      letter-spacing: 0.12em;
+      font-size: 13px;
+      color: var(--navy);
+    }
+
+    .hero-panel h1 {
+      font-size: clamp(30px, 4.2vw, 46px);
+      letter-spacing: 0.04em;
+      margin: 0;
+      color: var(--navy-dark);
+      transform: translateZ(calc(var(--tilt-depth) * 0.4));
+    }
+
+    .hero-description {
+      margin: 0;
+      font-size: clamp(16px, 2.2vw, 18px);
+      color: var(--subtext);
+      max-width: 680px;
+      transform: translateZ(calc(var(--tilt-depth) * 0.2));
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      justify-content: center;
+      transform: translateZ(calc(var(--tilt-depth) * 0.5));
+    }
+
+    .btn-main {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 56px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy-dark);
+      box-shadow: 0 16px 34px rgba(12, 38, 96, 0.32);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transform: translateZ(calc(var(--tilt-depth) * 0.6));
+    }
+
+    .btn-main:hover { transform: translateZ(calc(var(--tilt-depth) * 0.6)) translateY(-3px); box-shadow: 0 22px 40px rgba(12, 38, 96, 0.36); }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 26px;
+      border-radius: 999px;
+      background: rgba(12, 38, 96, 0.08);
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      border: 1px solid rgba(12, 38, 96, 0.14);
+      transform: translateZ(calc(var(--tilt-depth) * 0.3));
+    }
+
+    @keyframes float-card {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(calc(var(--card-float-distance) * -1)); }
+    }
+
+    @keyframes float-card-alt {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(var(--card-float-distance)); }
+    }
+
+    .first-lead {
+      background: var(--white);
+      margin-top: -20px;
+      padding: 86px 0 64px;
+      border-radius: 32px 32px 0 0;
+      box-shadow: 0 -20px 44px rgba(12, 38, 96, 0.12);
+    }
+
+    .first-lead .lead-paragraphs {
+      gap: 20px;
+      color: var(--subtext);
+      font-size: 17px;
+    }
+
+    .section { padding: 88px 0; }
+    .section.light { background: var(--gray); }
+    .section.sky { background: linear-gradient(180deg, var(--sky), var(--white)); }
+    .section.navy { background: radial-gradient(circle at top, rgba(198, 162, 74, 0.18), transparent 60%), var(--navy); color: var(--white); }
+    .section.sand { background: var(--sand); }
+    .section.beige { background: var(--beige); }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 52px;
+      position: relative;
+    }
+
+    .section-title h2 {
+      font-size: clamp(26px, 3.4vw, 38px);
+      margin: 0;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 64px;
+      height: 3px;
+      margin: 24px auto 0;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .lead-paragraphs {
+      max-width: 780px;
+      margin: 0 auto;
+      display: grid;
+      gap: 24px;
+      font-size: 1.05em;
+      color: var(--subtext);
+    }
+
+    .section.navy .lead-paragraphs p,
+    .section.navy .lead-paragraphs li { color: rgba(255, 255, 255, 0.88); }
+    .section.navy .lead-paragraphs strong { color: var(--gold-light); }
+    .section.navy .voice-card p,
+    .section.navy .voice-card h4 { color: var(--navy-dark); }
+
+    .lead-paragraphs strong { color: var(--navy); }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .card-grid .card:nth-child(odd) { animation: float-card 10s ease-in-out infinite; }
+    .card-grid .card:nth-child(even) { animation: float-card-alt 12s ease-in-out infinite; }
+
+    .voice-card { animation: float-card 11s ease-in-out infinite; }
+
+    .card:hover,
+    .voice-card:hover,
+    .timeline-step:hover,
+    .profile-block:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 54px rgba(12, 38, 96, 0.15);
+    }
+
+    .card:hover,
+    .voice-card:hover {
+      animation-play-state: paused;
+    }
+
+    .card, .voice-card, .faq-item, .profile-block, .timeline-step {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 32px;
+      border: 1px solid rgba(12, 38, 96, 0.08);
+      box-shadow: 0 18px 40px rgba(12, 38, 96, 0.08);
+      color: var(--text);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .profile-block { display: grid; gap: 20px; justify-items: center; text-align: left; }
+
+    [data-depth] {
+      position: relative;
+      z-index: 0;
+      --section-shift: 0px;
+      overflow: hidden;
+    }
+
+    [data-depth]::before {
+      content: '';
+      position: absolute;
+      inset: -30%;
+      background: radial-gradient(circle at 50% 20%, rgba(198, 162, 74, 0.12), transparent 65%), radial-gradient(circle at 80% 75%, rgba(12, 38, 96, 0.08), transparent 70%);
+      transform: translate3d(calc(var(--section-shift) * -0.9), calc(var(--section-shift) * 0.7), 0);
+      transition: transform 0.4s ease, opacity 0.6s ease;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .first-lead[data-depth]::before {
+      background: radial-gradient(circle at 35% 25%, rgba(198, 162, 74, 0.16), transparent 65%), radial-gradient(circle at 72% 70%, rgba(12, 38, 96, 0.06), transparent 70%);
+    }
+
+    .section.navy[data-depth]::before {
+      background: radial-gradient(circle at 45% 22%, rgba(233, 210, 143, 0.18), transparent 65%), radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.08), transparent 72%);
+      opacity: 0.6;
+    }
+
+    .card-visual,
+    .voice-visual,
+    .profile-visual,
+    .evidence-visual {
+      border-radius: 18px;
+      overflow: hidden;
+      margin: 0 0 22px;
+      position: relative;
+    }
+
+    .card-visual {
+      height: 180px;
+      background: linear-gradient(135deg, #eef3ff, #faf7ff);
+      border: 1px solid rgba(12, 38, 96, 0.08);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+
+    .card-visual--weapon { background: linear-gradient(135deg, #e4efff, #f3f9ff); }
+    .card-visual--graduate { background: linear-gradient(135deg, #f7eaff, #fff3f1); }
+    .card-visual--time { background: linear-gradient(135deg, #fff4e3, #fde7f3); }
+    .card-visual--confidence { background: linear-gradient(135deg, #e9fff5, #eaf0ff); }
+    .card-visual--authentic { background: linear-gradient(135deg, #fff2f2, #f9faff); }
+
+    .card-visual::after,
+    .voice-visual::after,
+    .evidence-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      box-shadow: inset 0 0 0 1px rgba(12, 38, 96, 0.06);
+      pointer-events: none;
+    }
+
+    .card-visual img,
+    .voice-visual img,
+    .profile-visual img,
+    .evidence-visual img,
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: inherit;
+    }
+
+    .voice-visual {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      margin: 0 auto 34px;
+      border-radius: 28px;
+      border: 3px solid rgba(255, 255, 255, 0.6);
+      background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(198, 196, 255, 0.35));
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    @media (min-width: 960px) {
+      .voice-visual { max-width: 420px; }
+    }
+
+    .voice-visual--idol { background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(198, 196, 255, 0.45)); }
+    .voice-visual--marriage { background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255, 209, 163, 0.45)); }
+    .voice-visual--connection { background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(167, 199, 255, 0.45)); }
+
+    .evidence-gallery {
+      display: grid;
+      gap: 28px;
+      margin: 48px auto 0;
+      max-width: 720px;
+    }
+
+    .evidence-intro {
+      display: grid;
+      gap: 18px;
+      margin-top: 36px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .evidence-caption {
+      font-size: 0.95em;
+      letter-spacing: 0.04em;
+      opacity: 1;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .evidence-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 34px;
+      padding: 20px;
+    }
+
+    .evidence-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0));
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      box-shadow: 0 32px 64px rgba(12, 38, 96, 0.26);
+      pointer-events: none;
+    }
+
+    .evidence-visual--primary { background: linear-gradient(160deg, #f0f4ff, #dce6ff); }
+    .evidence-visual--secondary { background: linear-gradient(160deg, #fff3ea, #ffe3d6); }
+    .evidence-visual--tertiary { background: linear-gradient(160deg, #f1fff7, #dff7ea); }
+
+    .evidence-visual img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 18px 38px rgba(12, 38, 96, 0.18);
+    }
+
+    .profile-visual {
+      width: min(360px, 100%);
+      margin: 0 auto 28px;
+      padding: 16px;
+      border-radius: 36px;
+      border: 3px solid rgba(198, 162, 74, 0.45);
+      background: rgba(255, 255, 255, 0.92);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 24px 48px rgba(12, 38, 96, 0.12);
+    }
+
+    .profile-visual--square { aspect-ratio: 1 / 1; }
+    .profile-visual--landscape { aspect-ratio: 16 / 9; }
+    .profile-visual--team {
+      width: min(420px, 100%);
+      padding: 0;
+      border-width: 2px;
+      border-radius: 30px;
+      aspect-ratio: auto;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(233, 240, 255, 0.92));
+    }
+    .profile-visual--overview {
+      width: min(680px, 100%);
+      padding: 0;
+      border-width: 2px;
+      border-radius: 28px;
+      aspect-ratio: auto;
+    }
+
+    .profile-visual img {
+      width: 100%;
+      height: 100%;
+      border-radius: 32px;
+      object-fit: cover;
+    }
+    .profile-visual--team img {
+      border-radius: 30px;
+    }
+    .profile-visual--overview img {
+      border-radius: 28px;
+      height: auto;
+    }
+
+    .consultant-groups {
+      display: grid;
+      gap: 24px;
+      margin-top: 12px;
+    }
+
+    .consultant-group {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .consultant-heading { color: var(--navy-dark); font-weight: 700; font-size: 1.05em; }
+
+    .consultant-avatars {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .avatar {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      padding: 0;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 18px 30px rgba(12, 38, 96, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid rgba(198, 162, 74, 0.25);
+      overflow: hidden;
+    }
+
+    .avatar picture,
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .avatar--female-a { background: linear-gradient(135deg, #ffe1f1, #ffd7ff); }
+    .avatar--female-b { background: linear-gradient(135deg, #fbd9ff, #ffd6e8); }
+    .avatar--male-a { background: linear-gradient(135deg, #d8e8ff, #d2fff5); }
+    .avatar--male-b { background: linear-gradient(135deg, #cbe2ff, #e0fff6); }
+
+    .consultant-copy { color: var(--subtext); font-size: 0.98em; line-height: 1.7; }
+
+    .section.navy .voice-card {
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(198, 162, 74, 0.45);
+      border-radius: 28px;
+      box-shadow: 0 24px 48px rgba(12, 38, 96, 0.2);
+      color: var(--navy-dark);
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+    }
+
+    .section.navy .voice-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      pointer-events: none;
+    }
+
+    .section.navy .voice-card .voice-visual {
+      border: 3px solid rgba(198, 162, 74, 0.45);
+      box-shadow: 0 18px 36px rgba(12, 38, 96, 0.18);
+    }
+    .section.navy .evidence-visual { border-color: rgba(255, 255, 255, 0.35); background: rgba(6, 21, 57, 0.35); }
+
+    .card h3 { color: var(--navy-dark); font-size: 1.2em; margin: 0 0 18px; }
+    .card p { margin: 0; font-size: 1.05em; color: var(--subtext); }
+
+    .section.navy .card p,
+    .section.navy .card h3 { color: var(--white); }
+
+    .voice-card h4 { margin: 0 0 12px; font-size: 18px; color: var(--navy-dark); }
+    .voice-card p { margin: 0; color: var(--subtext); }
+
+    .cta-inline { margin: 56px auto 0; text-align: center; }
+    .cta-inline p { margin-top: 12px; font-size: 13px; color: var(--subtext); }
+
+    .cta-banner {
+      text-align: center;
+      padding: 52px 36px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0));
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(6px);
+      color: var(--white);
+    }
+
+    .cta-banner h3 { font-size: 26px; margin: 0 0 18px; color: var(--white); }
+    .cta-banner p { margin: 0 0 28px; color: rgba(255, 255, 255, 0.92); }
+
+    .profile {
+      display: grid;
+      gap: 28px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .profile-block ul {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 12px;
+      color: var(--subtext);
+      font-size: 1em;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 26px;
+      margin-top: 40px;
+    }
+
+    .timeline-step h4 { margin: 0 0 12px; font-size: 18px; color: var(--navy-dark); }
+    .timeline-step p { margin: 0; color: var(--subtext); }
+
+    .faq { display: grid; gap: 24px; }
+    .faq-item h4 { margin: 0 0 12px; font-size: 18px; color: var(--navy-dark); }
+    .faq-item p { margin: 0; color: var(--subtext); }
+
+    .quote-box {
+      background: var(--white);
+      border-left: 5px solid var(--gold);
+      padding: 28px 34px;
+      border-radius: 16px;
+      font-weight: 600;
+      text-align: center;
+      color: var(--navy-dark);
+      box-shadow: 0 12px 32px rgba(12, 38, 96, 0.12);
+    }
+
+    .footer {
+      background: linear-gradient(145deg, var(--navy-dark), #0e2f78);
+      color: #ffffff;
+      text-align: center;
+      padding: 44px 0;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+    }
+
+    .footer p,
+    .footer a { color: #ffffff; margin: 6px 0; }
+
+    .floating-footer {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(6, 21, 57, 0.96);
+      color: #ffffff;
+      padding: 18px clamp(18px, 5vw, 42px);
+      padding-bottom: calc(18px + env(safe-area-inset-bottom));
+      box-shadow: 0 -14px 36px rgba(6, 21, 57, 0.28);
+      border-top: 1px solid rgba(198, 162, 74, 0.35);
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .floating-footer__inner {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(18px, 4vw, 48px);
+      flex-wrap: wrap;
+      padding-inline: clamp(16px, 6vw, 32px);
+    }
+
+    .floating-footer__message {
+      display: grid;
+      gap: 6px;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    .floating-footer__message strong {
+      font-size: 16px;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+    }
+
+    .floating-footer__actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .floating-footer__countdown {
+      display: grid;
+      gap: 4px;
+      text-align: right;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .floating-footer__countdown-label {
+      letter-spacing: 0.12em;
+    }
+
+    .floating-footer__countdown-time {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #ffffff;
+    }
+
+    .floating-footer__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px clamp(28px, 5vw, 40px);
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      color: var(--navy-dark);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      box-shadow: 0 16px 32px rgba(12, 38, 96, 0.32);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .floating-footer__cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px rgba(12, 38, 96, 0.36);
+    }
+
+    .floating-footer--ended .floating-footer__cta {
+      pointer-events: none;
+      background: rgba(255, 255, 255, 0.24);
+      color: rgba(6, 21, 57, 0.6);
+      box-shadow: none;
+    }
+
+    .floating-footer--ended .floating-footer__cta:hover {
+      transform: none;
+    }
+
+    .floating-footer--hidden {
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 720px) {
+      .floating-footer {
+        padding: 12px clamp(10px, 5vw, 16px) 14px;
+      }
+
+      .floating-footer__inner {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+      }
+
+      .floating-footer__message {
+        text-align: left;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+        gap: 2px;
+      }
+
+      .floating-footer__message strong {
+        font-size: 14px;
+      }
+
+      .floating-footer__message span {
+        display: none;
+      }
+
+      .floating-footer__actions {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .floating-footer__countdown {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        text-align: left;
+        font-size: 11px;
+      }
+
+      .floating-footer__cta {
+        flex: 1 1 auto;
+        padding: 12px 16px;
+        font-size: 14px;
+        letter-spacing: 0.04em;
+      }
+
+      .floating-footer__countdown-label {
+        letter-spacing: 0.08em;
+      }
+
+      .floating-footer__countdown-time {
+        font-size: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      :root {
+        --tilt-depth: 0px;
+        --card-float-distance: 0px;
+      }
+
+      .hero-panel,
+      .hero-panel::before,
+      .card,
+      .voice-card,
+      .timeline-step,
+      .profile-block,
+      [data-depth]::before {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+        box-shadow: 0 18px 40px rgba(12, 38, 96, 0.08);
+      }
+
+      .btn-main {
+        transform: none !important;
+      }
+      [data-depth] {
+        overflow: visible;
+      }
+      [data-depth]::before {
+        opacity: 0 !important;
+      }
+      .hero-orb {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner { margin: clamp(24px, 6vw, 48px) auto 0; }
+      .hero-panel { padding: clamp(32px, 6vw, 48px); }
+    }
+
+    @media (max-width: 640px) {
+      .hero-inner { margin: 20px auto 0; }
+      .hero-panel { border-radius: 20px; padding: 32px 24px 36px; box-shadow: 0 18px 36px rgba(6, 21, 57, 0.18); }
+      .btn-main { width: 100%; }
+      .card, .voice-card, .faq-item, .profile-block, .timeline-step { padding: 26px; }
+      .section { padding: 64px 0; }
+      .first-lead { padding: 72px 0 52px; margin-top: 0; }
+    }
+  </style>
+<style>
+/* Mobile width fix for .profile-block */
+@media (max-width: 768px) {
+  .profile-block {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .profile-block img,
+  .profile-block video,
+  .profile-block canvas {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+html, body { overflow-x: hidden; }
+</style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-orb hero-orb--left" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb--right" aria-hidden="true"></div>
+    <picture class="hero-visual">
+      <source media="(max-width: 900px)" srcset="renai_session_sp.webp">
+      <img src="renai_session_pc.webp" alt="THE ONLY ONE 個別相談会のキービジュアル">
+    </picture>
+    <div class="hero-inner">
+      <div class="hero-panel">
+        <div class="hero-tag">THE ONLY ONE 個別相談会</div>
+        <h1>自分らしさを武器に、本命の女性から選ばれる次の一歩を。</h1>
+        <p class="hero-description">「演じる恋愛」を終わらせたい誠実な男性のために。60分で“いい人止まり”を抜け出すロードマップと、唯一無二の戦略を手渡します。</p>
+        <div class="hero-cta">
+          <a class="btn-main" href="#entry">「戦略ロードマップ」&amp;個別相談会に申し込む</a>
+          <div class="badge">【無料】戦略ロードマップ&個別相談｜毎月5名様限定</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="first-lead" data-depth="0.45">
+    <div class="container">
+      <div class="lead-paragraphs">
+        <p>もう恋愛のためにテンションを作ったり、誰かのテンプレートを演じたりする時代は終わりです。<br>あなたの誠実さは、本命女性に刺さる武器になるんです。</p>
+        <p>『THE ONLY ONE』は、“いい人止まり”の男性が、独自の魅力を発見し、本命女性から「唯一無二」として選ばれるための<strong>新時代の恋愛プログラム</strong>です。</p>  
+      </div>
+    </div>
+  </section>
+
+  <section class="section light" id="empathy" data-depth="0.6">
+    <div class="container">
+      <div class="section-title">
+        <h2>なぜ、恋愛ノウハウを学んでも成果が出ないのか？</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>あなたはずっと、まっすぐに人と向き合ってきた。<br>真剣に相手の話を聞き、気持ちを考えて動いてきた。<br>誰かを軽く扱うことなく、むしろ誠実すぎるくらい丁寧に接してきたはず。</p>
+        <p>それなのに、いつも「いい人」で終わってしまう。<br>デートまでは行けても、その先へ進めない。<br>「もっと面白く話せたら」「もっと外見がカッコよければ」と努力を重ねても、結果がついてこない。</p>
+        <p>YouTubeで会話術を学び、雑誌で服を揃えても、頑張れば頑張るほど「本当の自分」から離れていく虚しさを覚えませんでしたか？<br>無理して演じた先にある関係が幸せかどうか、好きな人の前でさえ自分を偽らないといけないのかと悩んできたのではないでしょうか。</p>
+        <p>そしてふとした瞬間に、<strong>「俺って、やっぱり恋愛に向いてないのかもしれないな…」</strong>という声が聞こえてくる。<br>もしあなたがそう感じてるなら、、、どうかこのページを3分だけ読み進めてみてください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-depth="0.4">
+    <div class="container">
+      <div class="section-title">
+        <h2>あなたは悪くない。間違っていたのは「戦う土俵」だけ。</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>恋愛がうまくいかなかった根本原因は、あなたに魅力がなかったからではありません。<strong>“戦う土俵”を間違えていた</strong>だけ。<br>多くの恋愛ノウハウは「外向的でコミュニケーションが得意な男性」を基準に作られています。</p>
+        <p>それは誠実でじっくり関係を築きたいあなたに、「とにかくノリと勢いで盛り上げろ！」と言っているようなもの。<br>本来の魅力が消え、不自然さだけが残るのは当然です。</p>
+        <p>目指すべきは、「モテる男」の劣化版ではなく、他の誰とも比べようのない<strong>「唯一無二の存在」</strong>になることです。<br>そのために必要なのは他人軸ではなく自分軸で恋愛をすること。<br>そして、あなたの魅力はあなたの外ではなく、<strong>あなたの内側にすでにある</strong>んです。</p>
+    
+      </div>
+      <div class="cta-inline">
+        <a class="btn-main" href="#entry">誠実さを武器に変える方法を知る</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sky" data-depth="0.55">
+    <div class="container">
+      <div class="section-title">
+        <h2>あなたのために開発された世界で唯一無二の恋愛プログラム</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>『THE ONLY ONE』は小手先のテクニックは重視してません。<br>あなたの過去、価値観、そして「誠実さ」という個性を深く掘り下げ、それを「本命の女性から選ばれる、たった一つの理由」にまで昇華させる、全く新しいアプローチです。</p>
+        <p>もう無理に明るいキャラを演じる必要はありません。<br>口下手でも、トーク力に自信がなくても大丈夫。<br><strong>あなたの誠実さこそが、他の誰にも真似できない最高の武器になる</strong>んです。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-depth="0.5">
+    <div class="container">
+      <div class="section-title">
+        <h2>あなたの誠実さを魅力に変えることで手にできる未来</h2>
+      </div>
+      <!-- NOTE: Replace files under assets/images/card-*.webp to update these visuals -->
+      <div class="card-grid">
+        <div class="card">
+          <figure class="card-visual card-visual--weapon">
+            <picture>
+
+              <source srcset="assets/images/card-weapon.webp" type="image/webp">
+
+              <img alt="自分の誠実さを象徴する盾のイメージ" loading="lazy" src="assets/images/card-weapon.webp">
+
+            </picture>
+          </figure>
+          <h3>【あなただけの武器が手に入る】</h3>
+          <p>今までコンプレックスだった誠実さや優しさが、女性の心を強く惹きつける“揺るぎない武器”になることを実感します。</p>
+        </div>
+        <div class="card">
+          <figure class="card-visual card-visual--graduate">
+            <picture>
+
+              <source srcset="assets/images/card-graduate.webp" type="image/webp">
+
+              <img alt="信頼関係を表す握手のイメージ" loading="lazy" src="assets/images/card-graduate.webp">
+
+            </picture>
+          </figure>
+          <h3>【“いい人”から卒業できる】</h3>
+          <p>「いい人だよね」で終わる恋はもう終わり。<br><strong>「あなたがいい」「あなたじゃなきゃダメ」と求められる存在になります。</strong></p> 
+        </div>
+        <div class="card">
+          <figure class="card-visual card-visual--time">
+            <picture>
+
+              <source srcset="assets/images/card-time.webp" type="image/webp">
+
+              <img alt="共に過ごす時間を象徴する時計とカップのイメージ" loading="lazy" src="assets/images/card-time.webp">
+
+            </picture>
+          </figure>
+          <h3>【大好きな女性と過ごす時間】</h3>
+          <p>週末にどこへ行きたいか、何をしたいか。想像するだけで震えるような喜びと充実感に満ちた時間が待っています。</p>
+        </div>
+        <div class="card">
+          <figure class="card-visual card-visual--confidence">
+            <picture>
+
+              <source srcset="assets/images/card-confidence.webp" type="image/webp">
+
+              <img alt="凛と立つシルエットと上昇する矢印のイメージ" loading="lazy" src="assets/images/card-confidence.webp">
+
+            </picture>
+          </figure>
+          <h3>【ブレない軸が身につく】</h3>
+          <p>些細な反応に一喜一憂せず、自分の価値が揺らがなくなる。たとえうまくいかなくても落ち込まない、芯のある自信が手に入ります。</p>
+        </div>
+        <div class="card">
+          <figure class="card-visual card-visual--authentic">
+            <picture>
+
+              <source srcset="assets/images/card-authentic.webp" type="image/webp">
+
+              <img alt="自然体のふたりが寄り添うイメージ" loading="lazy" src="assets/images/card-authentic.webp">
+
+            </picture>
+          </figure>
+          <h3>【自分らしくいられる】</h3>
+          <p>演じる必要がなくなり、「素の自分」で心から笑い合える、本当に安心できる関係を築けるようになります。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section navy" data-depth="0.45">
+    <div class="container">
+      <div class="section-title">
+        <h2>あなたと同じような悩みを持っていた方が続々と成果を出してます</h2>
+      </div>
+      <!-- NOTE: Replace assets/images/voice-*.webp to swap testimonial visuals -->
+      <div class="voice-card">
+        <figure class="voice-visual voice-visual--idol">
+          <picture>
+
+            <source srcset="assets/images/voice-idol.webp" type="image/webp">
+
+            <img alt="スポットライトが輝くステージのイメージ" loading="lazy" src="assets/images/voice-idol.webp">
+
+          </picture>
+        </figure>
+        <h4>CASE 1：「某有名アイドルグループの女性と、本命カップルに」<br><span style="font-weight:400; font-size:14px; opacity:0.9;">30代後半・自営業 Eさん</span></h4>
+        <p>参加前はアプリで出会えず友達どまり。<br>「もう今から恋愛は無理かも…」と自信を失っていたが、プログラム参加後、長年の“推し”だった<strong>某有名アイドルグループの女性 </strong>を射止めることに成功。<br>「自分を偽らずに個性を活かせば、こんな未来が待っているんですね」と喜びの声をいただきました。</p>
+      </div>
+      <div class="voice-card">
+        <figure class="voice-visual voice-visual--marriage">
+          <picture>
+
+            <source srcset="assets/images/voice-marriage.webp" type="image/webp">
+
+            <img alt="婚約指輪と柔らかな光のイメージ" loading="lazy" src="assets/images/voice-marriage.webp">
+
+          </picture>
+        </figure>
+        <h4>CASE 2：「Withで超人気会員から逆告白され結婚」<br><span style="font-weight:400; font-size:14px; opacity:0.9;">30代前半・公務員 Oさん</span></h4>
+        <p>1年間アプリで成果ゼロの状態から、外見とプロフを抜本改善。アプリのいいね数が10倍以上になり、<strong>1000以上のいいねを持つ超人気女性から逆告白され結婚。</strong></strong></p>
+      </div>
+      <div class="voice-card">
+        <figure class="voice-visual voice-visual--connection">
+          <picture>
+
+            <source srcset="assets/images/voice-connection.webp" type="image/webp">
+
+            <img alt="心がつながる二人のイメージ" loading="lazy" src="assets/images/voice-connection.webp">
+
+          </picture>
+        </figure>
+        <h4>CASE 3：「人生史上最高の彼女をゲットし心の奥深くでつながる関係に」<br><span style="font-weight:400; font-size:14px; opacity:0.9;">20代後半・会社員 Aさん</span></h4>
+        <p>コミュ力はあるのに友達止まり。<br>けいじ式メソッドを一つひとつ実践し、<strong>デートした女性の9割</strong>を口説けるように。<br>その結果、心が通じ合う最高の彼女をゲットした末に同棲中</p>
+      </div>
+      <div class="evidence-intro">
+        <div class="lead-paragraphs">
+          <p>その他にも「彼女ができた」「結婚できた」という報告が毎月のように届いています。<br>信じられないかもしれませんが、彼らもほんの数ヶ月前までは、あなたと同じ場所で一人悩んでいました。</p>
+        </div>
+        <p class="evidence-caption">以下は実際に届いた成果報告の一部です。</p>
+      </div>
+      <div class="evidence-gallery">
+        <figure class="evidence-visual evidence-visual--primary">
+          <picture>
+
+            <source srcset="assets/images/evidence-01.webp" type="image/webp">
+
+            <img alt="Evidence 01 実績スクリーンショット" loading="lazy" src="assets/images/evidence-01.webp">
+
+          </picture>
+        </figure>
+        <figure class="evidence-visual evidence-visual--secondary">
+          <picture>
+
+            <source srcset="assets/images/evidence-02.webp" type="image/webp">
+
+            <img alt="Evidence 02 実績スクリーンショット" loading="lazy" src="assets/images/evidence-02.webp">
+
+          </picture>
+        </figure>
+        <figure class="evidence-visual evidence-visual--tertiary">
+          <picture>
+
+            <source srcset="assets/images/evidence-03.webp" type="image/webp">
+
+            <img alt="Evidence 03 実績スクリーンショット" loading="lazy" src="assets/images/evidence-03.webp">
+
+          </picture>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sand" data-depth="0.4">
+    <div class="container">
+      <div class="section-title">
+        <h2>業界初！男性×女性のハイブリッド型コンサルティング</h2>
+      </div>
+      <div class="profile">
+        <div class="profile-block">
+          <figure class="profile-visual profile-visual--square" style="width:min(320px, 85%);">
+            <img src="profile.webp" alt="恋愛戦略家けいじのプロフィール写真" loading="lazy">
+          </figure>
+          <h3>主宰者紹介｜けいじ<br><span style="font-size:14px; font-weight:400;">「いい人止まり」を“唯一無二”の魅力に変える恋愛戦略家</span></h3>
+          <ul>
+            <li><strong>原体験：</strong>26年間好きな女性には相手にされずいい人止まりの日々を過ごす。</li>
+            <li><strong>実績：</strong>月2本程度の更新でYouTube登録者数1万人超える人気チャンネルを運営。<br>誠実な男性に特化した日本初の恋愛コーチングプログラムで彼女ゲットや結婚など成果が続出している。</li>
+            <li><strong>再現性：</strong>総額1,000万円以上の自己投資と、250人の女性経験。<br>400人以上の恋愛コーチング経験から導き出した、再現性の高い恋愛ノウハウを提供。</li>
+          </ul>
+        </div>
+        <div class="profile-block">
+          <h3>恋愛業界で唯一のハイブリッド型サポート</h3>
+          <figure class="profile-visual profile-visual--team profile-visual--square" style="width:min(400px, 90%);">
+            <picture>
+
+              <source srcset="assets/images/team-support.webp" type="image/webp">
+
+              <img alt="男女コンサルタントチームが戦略を練る様子" loading="lazy" src="assets/images/team-support.webp">
+
+            </picture>
+          </figure>
+          <p>一人のカリスマ講師に偏ったサポートではなく、各分野の専門コンサルタントスタッフがチームで伴走します。</p>
+          <div class="consultant-groups">
+            <!-- NOTE: Replace assets/images/consultant-*.webp with顔写真 -->
+            <div class="consultant-group consultant-group--female">
+              <p class="consultant-heading">美女コンサルタント陣：</p>
+              <div class="consultant-avatars">
+                <figure class="avatar avatar--female-a">
+                  <picture>
+
+                    <source srcset="assets/images/consultant-female-a.webp" type="image/webp">
+
+                    <img alt="女性コンサルタント A の写真" loading="lazy" src="assets/images/consultant-female-a.webp">
+
+                  </picture>
+                </figure>
+                <figure class="avatar avatar--female-b">
+                  <picture>
+
+                    <source srcset="assets/images/consultant-female-b.webp" type="image/webp">
+
+                    <img alt="女性コンサルタント B の写真" loading="lazy" src="assets/images/consultant-female-b.webp">
+
+                  </picture>
+                </figure>
+              </div>
+              <p class="consultant-copy">元モデル・元一流ホステスなどが女性視点からリアルな心理を共有。<br>優しくて情熱的な美女があなたが成果が出るまで寄り添います</p>
+            </div>
+            <div class="consultant-group consultant-group--male">
+              <p class="consultant-heading">男性コンサルタント陣：</p>
+              <div class="consultant-avatars">
+                <figure class="avatar avatar--male-a">
+                  <picture>
+
+                    <source srcset="assets/images/consultant-male-a.webp" type="image/webp">
+
+                    <img alt="男性コンサルタント A の写真" loading="lazy" src="assets/images/consultant-male-a.webp">
+
+                  </picture>
+                </figure>
+                <figure class="avatar avatar--male-b">
+                  <picture>
+
+                    <source srcset="assets/images/consultant-male-b.webp" type="image/webp">
+
+                    <img alt="男性コンサルタント B の写真" loading="lazy" src="assets/images/consultant-male-b.webp">
+
+                  </picture>
+                </figure>
+              </div>
+              <p class="consultant-copy">男性視点でのロジカルな恋愛戦略を提供します。<br>過去あなたと同じように恋愛に悩んでいたコンサルタントが、あなたと同じ視点で実践的なサポートが可能です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-depth="0.35">
+    <div class="container">
+      <div class="section-title">
+        <h2>たったの60分であなたが本命彼女を手に入れる恋愛戦略を設計します</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>何から始めればいいかわからない…今のまま進んで大丈夫なんだろうか。そんなふうに悩んでいるあなたへ<br>今回、特別にあなた専用の成功法則（ロードマップ）を見つける機会を用意しました。<br>年齢・性格・恋愛経験・住む場所によって戦略は100通り。<br>誰かの成功法則があなたに当てはまらなかったのは当然なんです。</p>
+        <p>世界で1つだけのあなたの専用の『恋愛戦略ロードマップ』を設計します。</p>
+      </div>
+      <div class="profile-block" style="margin-top:40px;">
+        <h3>個別相談会 概要</h3>
+        <figure class="profile-visual profile-visual--overview profile-visual--landscape">
+          <picture>
+
+            <source srcset="assets/images/consultation-overview.webp" type="image/webp">
+
+            <img alt="個別相談会概要のイメージ" loading="lazy" src="assets/images/consultation-overview.webp">
+
+          </picture>
+        </figure>
+        <ul>
+          <li><strong>形式：</strong>Zoomを使ったオンライン個別セッション</li>
+          <li><strong>時間：</strong>あなたの悩みと向き合う濃密な60分</li>
+          <li><strong>料金：</strong>通常10,000円 → このページをご覧のあなただけ<strong>完全無料</strong></li>
+        </ul>
+      </div>
+      <div class="lead-paragraphs" style="margin-top:32px;">
+        <p><strong>なぜ無料なのか？</strong><br>あなた専用の戦略を本気で考えるためには、まず私たちがあなたの現状を深く理解する必要があります。この60分はお互いのミスマッチを防ぎ、心から変わりたいと願う方と本気で向き合うための時間です。もし満足いただけなければ、無理な勧誘は一切しません。</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-step">
+          <h4>1. あなたの現状と課題の明確化</h4>
+          <p>なぜあなたの恋愛がうまくいかないのか？プロの視点で根本原因を特定。的外れな努力に終止符を打ちましょう。</p>
+        </div>
+        <div class="timeline-step">
+          <h4>2. あなただけの“武器”の発見</h4>
+          <p>あなたの価値観や個性を丁寧にヒアリングし、どうすれば「他の男にはない絶対的な魅力」として伝わるのかを明らかにします。</p>
+        </div>
+        <div class="timeline-step">
+          <h4>3. 成果を出すまでのロードマップを作成</h4>
+          <p>大事なのは、成果を出すまでに明日から何をすべきか？です。再現性の高い具体的なアクションプランを提示します。</p>
+        </div>
+      </div>
+      <div class="section-title" style="margin-top:64px;">
+        <h2>個別相談会 参加者の声</h2>
+      </div>
+      <div class="card-grid">
+        <div class="voice-card">
+          <h4>「僕が本当にやるべきだったのは、“誰かの真似”ではなく“自分の深掘り”でした」<br><span style="font-weight:400; font-size:14px;">32歳・メーカー勤務 T.Sさん</span></h4>
+          <p>「無料だから勧誘があるだろう」と半信半疑でしたが、60分間真剣に話を聞いてくれ、自分では気づかなかった魅力を提示してくれました。何をすべきかが明確になり、1年間迷っていた時間より価値がありました。」</p>
+        </div>
+        <div class="voice-card">
+          <h4>「“いい人”の呪いを解くカギは、自分の中にありました」<br><span style="font-weight:400; font-size:14px;">28歳・公務員 K.Nさん</span></h4>
+          <p>「優しいよね」と言われるたび落ち込んでいたが、「それは才能です」と言われ、魅力として伝える具体策を得られました。無理に演じる必要がないと分かり、心が軽くなりました。</p>
+        </div>
+        <div class="voice-card">
+          <h4>「恋愛経験ゼロの僕でも、進むべき道がハッキリ見えました」<br><span style="font-weight:400; font-size:14px;">25歳・ITエンジニア R.Mさん</span></h4>
+          <p>相談すること自体が不安でしたが、丁寧なヒアリングで「まずはここから」を地図のように示してくれました。「これならできる」と自信が持てました。</p>
+        </div>
+        <div class="voice-card">
+          <h4>「口下手は欠点ではなく“個性”なんですね」<br><span style="font-weight:400; font-size:14px;">35歳・研究職 A.Yさん</span></h4>
+          <p>面白い話ができない自分にコンプレックスがありましたが、聞き上手であることが魅力だと教えてもらい、プロフ文の書き方まで指導いただきました。自分のままでいいと許可をもらえた気持ちです。</p>
+        </div>
+        <div class="voice-card">
+          <h4>「“もう年だから”と諦めていた自分を殴ってやりたいです」<br><span style="font-weight:400; font-size:14px;">41歳・自営業 S.Iさん</span></h4>
+          <p>厳しいことを言われるかと構えていましたが、年齢や経験が「信頼感」「安心感」という武器になると教えてもらえました。寄り添いながら戦い方を一緒に考えてくれたことが嬉しかったです。</p>
+        </div>
+      </div>
+      <div class="cta-inline" style="margin-top:64px;">
+        <a class="btn-main" href="#entry">【無料】60分で恋愛が変わる戦略ロードマップを手に入れる</a>
+        <p>※毎月5名様限定・定員に達し次第終了</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section navy" data-depth="0.35">
+    <div class="container">
+      <div class="section-title">
+        <h2>なぜ、このプログラムを創ったのか？</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>世の中平等ではありません。でも、<strong>「優しくて誠実な人が苦しんでるのっておかしくない？」</strong><br>そんなシンプルな問いからすべては始まりました。<br>僕も26年間誠実さを武器として使えず、ずーっと“いい人止まり”の状態でした。女性に誠実に向き合っているのに、クズでチャラい男にすべてを奪われてしまう。あの屈辱と絶望感は今でも忘れられません。</p>
+        <p>悔しさから恋愛工学にのめり込み、250人以上の女性と関係を持つナンパ中毒に。<br>しかしその先にあったのは「これは本当の幸せじゃない」という虚無感だけ。<br>その後、今の妻と出会い、一人の女性を心から愛することこそが幸せな人生に繋がるんだと気づきました。</p>
+        <p>その経験から強く断言できることがあります。<br>それは、<strong>誠実で優しい人だからこそ1人の女性を幸せにできる、いやしなければならない</strong><br>それが僕の一生をかけた使命だと思ってます。<br>そんな想いからコーチングや心理学を学び直し、誠実さを最強の武器に変える『THE ONLY ONE』メソッドが誕生しました。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-depth="0.3">
+    <div class="container">
+      <div class="section-title">
+        <h2>迷っている間に、未来のパートナーはライバルに奪われている</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>今、多くの女性たちが表面的な魅力やテクニック頼みの薄っぺらい男性との関係に疲れ果ててます。<br>彼女たちは<strong>誠実で安心できる男性</strong>を渇望してるんです。</p>
+        <p>あなたが迷っているこの瞬間にも、中身の伴わないテクニックだけを覚えた自己中心的な男たちがアプローチをかけています。<br>このままでは、あなたが本来出会うはずだった清楚で美しい女性たちが、彼らに汚されていってしまう。</p>
+        <p>このまま何もしなければ、数年後には孤独と「あの時、一歩踏み出していれば…」という後悔しか残りません。<br>この個別相談会は、そんな最悪の未来を断ち切り、あなたが彼女たちに“見つけてもらう”ための<strong>人生を変える最初の一歩</strong>です。</p>
+        <p>もちろん無理な勧誘は一切ありません。満足いただけなければ退出していただいて構いません。<br>行動したことであなたが失うものは何もありません。失う可能性があるのは、手に入るはずだった幸せな未来だけです。</p>
+      </div>
+      <div class="cta-inline" style="margin-top:56px;">
+        <a class="btn-main" href="#entry">【無料・毎月5名限定】理想の未来への第一歩を踏み出す</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section beige" id="faq" data-depth="0.25">
+    <div class="container">
+      <div class="section-title">
+        <h2>よくある質問</h2>
+        <p>無料個別相談とプログラムについての疑問に正直にお答えします。</p>
+      </div>
+      <h3 style="text-align:center; margin-bottom:32px;">▼ 無料個別相談について</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Q. 本当に無料ですか？後から料金を請求されたりしませんか？</h4>
+          <p>A. はい、完全に無料です。この60分で料金が発生することは一切ありませんので、ご安心ください。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. 強い勧誘をされそうで、少し怖いです…</h4>
+          <p>A. あなたの意思を最優先します。無理な勧誘は一切行いません。むしろ私たちが「このプログラムは合わない」と判断した場合には、お断りすることもあります。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. 特に準備するものは？恋愛経験が少なく話すのが苦手です。</h4>
+          <p>A. 特別な準備は不要です。話すのが苦手でも問題ありません。私たちが丁寧に引き出していきますので、ありのままのあなたでご参加ください。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. Zoomを使ったことがなく、顔出しにも抵抗があります。</h4>
+          <p>A. 操作方法は丁寧にご案内します。顔出しが難しい場合は音声のみでの参加も可能です。安心できる形でご参加ください。</p>
+        </div>
+      </div>
+      <h3 style="text-align:center; margin:56px 0 32px;">▼ 『THE ONLY ONE』プログラムについて</h3>
+      <div class="faq">
+        <div class="faq-item">
+          <h4>Q. 内向的なタイプでも、本当に成果は出ますか？</h4>
+          <p>A. はい。このプログラムは誠実で内向的な方にこそ最大の効果を発揮するよう設計されています。他の恋愛講座が合わなかった方ほど試してください。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. 仕事が不規則で忙しいのですが、続けられますか？</h4>
+          <p>A. オンライン完結型のため、ご自身のペースで進められます。個別コンサルもスケジュールに合わせて柔軟に調整可能です。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. どのくらいの期間で効果が出ますか？</h4>
+          <p>A. 早い方で1ヶ月以内にマッチング率が劇的に向上。多くの方が3〜6ヶ月で本命の女性との関係構築という成果を出しています。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. すぐ始めるつもりはないのですが、それでも参加して良いですか？</h4>
+          <p>A. もちろんです。ただし多くの方が「もっと早く知っていれば」と後悔されます。恋愛市場の競争は年々激化しています。現状を把握するだけでも大きな差が生まれます。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. 高額な費用を払う決心がつきません。</h4>
+          <p>A. だからこそ無料個別相談をご用意しています。この60分で価値を感じなければ一切費用はかかりません。厳しく見極めてください。</p>
+        </div>
+        <div class="faq-item">
+          <h4>Q. まずは自分でやってみて、それでもダメなら検討したいです。</h4>
+          <p>A. その姿勢は素晴らしいです。ただ「正しい地図」を持たずに自己流で進むと、時間を浪費するリスクがあります。この相談会は、自己流が正しい方向に向かっているかを確かめる場としても活用できます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="closure" data-depth="0.28">
+    <div class="container">
+      <div class="section-title">
+        <h2>最後に、ここまで読んでくれたあなたへ伝えたいこと</h2>
+      </div>
+      <div class="lead-paragraphs">
+        <p>ここまで読んでいただきありがとうございます。多くの人が恋愛の重要性を甘く見ています。結婚するパートナー選びは、家を買うよりも重要な決断です。「家は一生で一番大きな買い物」と言いますが、たとえどんな家でも楽しく生活できます。しかしパートナー選びを間違えると、人生に大きな影響を及ぼします。</p>
+        <p>パートナー選びの価値は<strong>数千万円する家よりも大きい</strong>。それに気づかず「この人でいいか」と結婚し、離婚したりATMとして扱われたりする人が後を絶ちません。だからこそ今から恋愛を攻略し、結婚したいと思ったときに最適な選択ができる準備をしておく必要があります。</p>
+        <p>私たちのプログラムで得られるのは、マッチングアプリやコミュニケーションのスキルだけではありません。<strong>・どんな人生を歩みたいのか ・譲れない価値観は何か ・どんなパートナーを選ぶべきか</strong>という人生レベルの意思決定軸を手に入れられます。これこそ、最も学んでほしいことです。</p>
+        <p>私のミッションは<strong>「愛する1人の女性を幸せにできる男」を増やすこと</strong>。自己中心的な恋愛が溢れる社会で、誠実な男性を求める女性が救いを求めています。あなたの誠実さや優しさは、後世に残すべき貴重な遺伝子です。</p>
+        <p>あなたが恋愛を諦めることは、もうあなただけの問題ではありません。本来幸せにするはずだった女性や、あなたから始まる家族の未来が失われるかもしれない。大げさに聞こえるかもしれませんが、これは紛れもない事実です。</p>
+        <p>自分の本当の欲求に正直になり、本命の女性を手に入れるために覚悟を決める。その小さな一歩が、あなた自身と周りの世界を確実に良い方向へと変えていきます。けれど一人でそこに辿り着くのは険しい道。だから、僕と一緒にリーダーとして人生の舵を取り戻しませんか？</p>
+        <p>これは単なる恋愛講座への誘いではありません。孤独と後悔に満ちた未来に終止符を打ち、貢献と幸福に満ちた人生を共に創っていくための<strong>同志への招待状</strong>です。会場で、あなたの本音を聞けることを心から楽しみにしています。</p>
+        <p style="text-align:right;">けいじ</p>
+      </div>
+      <div class="quote-box">
+        <strong>【本日締切】無料で人生を変える、最後のチャンスを掴む</strong>
+      </div>
+      <div class="cta-inline" style="margin-top:36px;">
+        <a class="btn-main" href="#entry">無料個別相談に申し込む</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section navy" id="entry" data-depth="0.22">
+    <div class="container">
+      <div class="cta-banner">
+        <h3>【毎月5名様限定】無料個別相談 &amp; 戦略ロードマップ</h3>
+        <p>孤独と後悔に終止符を打ち、誠実さを最強の武器に変える60分。迷いを手放し、自分だけの恋愛戦略を手に入れてください。</p>
+        <a class="btn-main" href="https://arkadia-japan.com/p/r/Q9JMsNXf" target="_blank" rel="noopener">今すぐ申し込む</a>
+        <p style="margin-top:16px; font-size:13px; opacity:0.95; color:var(--white);">※定員に達し次第、予告なく募集を終了いたします</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="floating-footer" id="floating-footer" role="complementary" aria-label="無料相談会申し込み案内">
+    <div class="floating-footer__inner">
+      <div class="floating-footer__message">
+        <strong>【本日締切】無料個別相談は先着順です</strong>
+        <span>残枠が埋まる前に、今すぐお申し込みください。</span>
+      </div>
+      <div class="floating-footer__actions">
+        <div class="floating-footer__countdown" aria-live="polite">
+          <span class="floating-footer__countdown-label">募集終了まで</span>
+          <span class="floating-footer__countdown-time" id="countdown-timer">12:00:00</span>
+        </div>
+        <a class="floating-footer__cta" href="https://arkadia-japan.com/p/r/Q9JMsNXf" target="_blank" rel="noopener">無料相談に申し込む</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>THE ONLY ONE 個別相談会｜運営：けいじ</p>
+      <p>Copyright © THE ONLY ONE. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const panel = document.querySelector('.hero-panel');
+      const hero = document.querySelector('.hero');
+      if (!panel || !hero) {
+        return;
+      }
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const supportsHover = window.matchMedia('(hover: hover)');
+      if (prefersReducedMotion.matches || !supportsHover.matches) {
+        return;
+      }
+
+      let targetTiltX = 0;
+      let targetTiltY = 0;
+      let rafId = null;
+
+      const applyTilt = function () {
+        panel.style.setProperty('--tilt-x', targetTiltX.toFixed(2) + 'deg');
+        panel.style.setProperty('--tilt-y', targetTiltY.toFixed(2) + 'deg');
+        rafId = null;
+      };
+
+      const scheduleUpdate = function () {
+        if (rafId !== null) {
+          return;
+        }
+        rafId = window.requestAnimationFrame(applyTilt);
+      };
+
+      const handlePointerMove = function (event) {
+        if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== 'pen') {
+          return;
+        }
+        const rect = panel.getBoundingClientRect();
+        const relX = (event.clientX - rect.left) / rect.width;
+        const relY = (event.clientY - rect.top) / rect.height;
+
+        targetTiltY = (relX - 0.5) * 10;
+        targetTiltX = (0.5 - relY) * 8;
+        scheduleUpdate();
+      };
+
+      const resetTilt = function () {
+        targetTiltX = 0;
+        targetTiltY = 0;
+        scheduleUpdate();
+        panel.classList.remove('hero-panel--active');
+      };
+
+      const activateTilt = function (event) {
+        if (event.pointerType && event.pointerType !== 'mouse' && event.pointerType !== 'pen') {
+          return;
+        }
+        panel.classList.add('hero-panel--active');
+      };
+
+      panel.addEventListener('pointermove', handlePointerMove);
+      panel.addEventListener('pointerenter', activateTilt);
+      panel.addEventListener('pointerleave', resetTilt);
+      hero.addEventListener('mouseleave', resetTilt);
+
+      panel.addEventListener('focusin', function () {
+        panel.classList.add('hero-panel--active');
+      });
+
+      panel.addEventListener('focusout', function () {
+        if (!panel.contains(document.activeElement)) {
+          resetTilt();
+        }
+      });
+
+      const handleReduceChange = function (event) {
+        if (event.matches) {
+          panel.style.removeProperty('--tilt-x');
+          panel.style.removeProperty('--tilt-y');
+          panel.classList.remove('hero-panel--active');
+          panel.removeEventListener('pointermove', handlePointerMove);
+          panel.removeEventListener('pointerenter', activateTilt);
+          panel.removeEventListener('pointerleave', resetTilt);
+          hero.removeEventListener('mouseleave', resetTilt);
+        }
+      };
+
+      if (typeof prefersReducedMotion.addEventListener === 'function') {
+        prefersReducedMotion.addEventListener('change', handleReduceChange);
+      } else if (typeof prefersReducedMotion.addListener === 'function') {
+        prefersReducedMotion.addListener(handleReduceChange);
+      }
+    })();
+
+    (function () {
+      const depthElements = document.querySelectorAll('[data-depth]');
+      if (!depthElements.length) {
+        return;
+      }
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const maxShift = 80;
+      let ticking = false;
+
+      const updateDepth = function () {
+        const viewportCenter = window.innerHeight / 2;
+        depthElements.forEach(function (element) {
+          const rect = element.getBoundingClientRect();
+          const elementCenter = rect.top + rect.height / 2;
+          const normalized = (viewportCenter - elementCenter) / viewportCenter;
+          const depthFactor = parseFloat(element.dataset.depth || '0.4');
+          const shift = Math.max(-maxShift, Math.min(maxShift, normalized * depthFactor * maxShift));
+          element.style.setProperty('--section-shift', shift.toFixed(2) + 'px');
+        });
+        ticking = false;
+      };
+
+      const requestUpdate = function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(updateDepth);
+        }
+      };
+
+      const enableDepthEffects = function () {
+        updateDepth();
+        window.addEventListener('scroll', requestUpdate, { passive: true });
+        window.addEventListener('resize', updateDepth, { passive: true });
+      };
+
+      const disableDepthEffects = function () {
+        ticking = false;
+        window.removeEventListener('scroll', requestUpdate);
+        window.removeEventListener('resize', updateDepth);
+        depthElements.forEach(function (element) {
+          element.style.setProperty('--section-shift', '0px');
+        });
+      };
+
+      if (prefersReducedMotion.matches) {
+        disableDepthEffects();
+      } else {
+        enableDepthEffects();
+      }
+
+      const handlePreferenceChange = function (event) {
+        if (event.matches) {
+          disableDepthEffects();
+        } else {
+          enableDepthEffects();
+        }
+      };
+
+      if (typeof prefersReducedMotion.addEventListener === 'function') {
+        prefersReducedMotion.addEventListener('change', handlePreferenceChange);
+      } else if (typeof prefersReducedMotion.addListener === 'function') {
+        prefersReducedMotion.addListener(handlePreferenceChange);
+      }
+    })();
+
+    (function () {
+      const countdownEl = document.getElementById('countdown-timer');
+      const footerEl = document.getElementById('floating-footer');
+      const ctaEl = footerEl ? footerEl.querySelector('.floating-footer__cta') : null;
+      const pageFooter = document.querySelector('footer.footer');
+      const rootStyle = document.documentElement.style;
+
+      const setFooterOffset = function (value) {
+        const offset = Math.max(0, value || 0);
+        rootStyle.setProperty('--floating-footer-offset', offset + 'px');
+        document.body.style.setProperty('--floating-footer-offset', offset + 'px');
+      };
+
+      const updateFooterOffset = function () {
+        if (!footerEl || footerEl.classList.contains('floating-footer--hidden')) {
+          return;
+        }
+        const footerHeight = footerEl.offsetHeight || 0;
+        setFooterOffset(footerHeight);
+      };
+
+      updateFooterOffset();
+      window.addEventListener('load', updateFooterOffset);
+      window.addEventListener('resize', updateFooterOffset);
+      window.addEventListener('orientationchange', updateFooterOffset);
+      if (typeof ResizeObserver !== 'undefined' && footerEl) {
+        const observer = new ResizeObserver(updateFooterOffset);
+        observer.observe(footerEl);
+      }
+
+      if (pageFooter && footerEl && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              footerEl.classList.add('floating-footer--hidden');
+              setFooterOffset(0);
+            } else {
+              footerEl.classList.remove('floating-footer--hidden');
+              updateFooterOffset();
+            }
+          });
+        }, { rootMargin: '0px 0px 120px 0px' });
+        io.observe(pageFooter);
+      }
+
+      if (!countdownEl || !footerEl) {
+        return;
+      }
+
+      const STORAGE_KEY = 'the-only-one-floating-footer-deadline';
+      const DURATION = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+      const now = Date.now();
+      let deadline = now + DURATION;
+
+      try {
+        const storedValue = window.localStorage.getItem(STORAGE_KEY);
+        if (storedValue) {
+          const parsed = parseInt(storedValue, 10);
+          if (!Number.isNaN(parsed) && parsed > now) {
+            deadline = parsed;
+          } else {
+            deadline = now + DURATION;
+            window.localStorage.setItem(STORAGE_KEY, String(deadline));
+          }
+        } else {
+          window.localStorage.setItem(STORAGE_KEY, String(deadline));
+        }
+      } catch (error) {
+        deadline = now + DURATION;
+      }
+
+      const formatTime = function (ms) {
+        const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+        const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+        const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+        const seconds = String(totalSeconds % 60).padStart(2, '0');
+        return hours + ':' + minutes + ':' + seconds;
+      };
+
+      const finalize = function () {
+        countdownEl.textContent = '00:00:00';
+        footerEl.classList.add('floating-footer--ended');
+        if (ctaEl) {
+          ctaEl.setAttribute('aria-disabled', 'true');
+          ctaEl.textContent = '受付は終了しました';
+        }
+        setFooterOffset(0);
+        try {
+          window.localStorage.removeItem(STORAGE_KEY);
+        } catch (error) {
+          // localStorage unavailable, nothing else to do
+        }
+      };
+
+      const tick = function () {
+        const remaining = deadline - Date.now();
+        if (remaining <= 0) {
+          finalize();
+          window.clearInterval(intervalId);
+          return;
+        }
+        countdownEl.textContent = formatTime(remaining);
+      };
+
+      tick();
+      const intervalId = window.setInterval(tick, 1000);
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') {
+          tick();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+
