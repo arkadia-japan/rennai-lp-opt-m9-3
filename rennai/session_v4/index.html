@@ -941,7 +941,30 @@
 }
 html, body { overflow-x: hidden; }
 </style>
-</head>
+<style id="profile-block-mobile-fix">
+/* Strong full-bleed mobile fix for .profile-block */
+@media (max-width: 768px) {
+  .profile-block {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    padding: 0 !important;
+  }
+  .profile-block img,
+  .profile-block picture,
+  .profile-block video,
+  .profile-block canvas,
+  .profile-block figure {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+  }
+}
+/* Guard against any horizontal scroll */
+html, body { overflow-x: clip; }
+</style></head>
 <body>
   <header class="hero">
     <div class="hero-orb hero-orb--left" aria-hidden="true"></div>
@@ -1751,4 +1774,5 @@ html, body { overflow-x: hidden; }
   </script>
 </body>
 </html>
+
 
