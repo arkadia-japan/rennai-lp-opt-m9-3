@@ -1494,7 +1494,8 @@ body.modal-open {
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 56px 0 72px;
+    /* Remove unnecessary top space on mobile */
+    padding: 0;
   }
 
   .hero__content {
