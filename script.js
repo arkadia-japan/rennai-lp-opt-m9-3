@@ -142,10 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', (event) => {
+      const onCloseClick = (event) => {
         event.preventDefault();
+        if (typeof event.stopPropagation === 'function') {
+          event.stopPropagation();
+        }
         closeModal();
-      });
+      };
+      try {
+        trigger.addEventListener('click', onCloseClick, { capture: true });
+      } catch (e) {
+        trigger.addEventListener('click', onCloseClick, true);
+      }
     });
   }
 
