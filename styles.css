@@ -1196,6 +1196,8 @@ body.modal-open {
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
+  /* Ensure the close button stays above any form content on small screens */
+  z-index: 2;
 }
 
 .form-modal__close:hover,
