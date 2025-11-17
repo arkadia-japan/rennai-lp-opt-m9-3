@@ -964,6 +964,22 @@ html, body { overflow-x: hidden; }
 }
 /* Guard against any horizontal scroll */
 html, body { overflow-x: clip; }
+</style><style id="container-mobile-fix">
+:root { --container-gutter: clamp(16px, 5vw, 24px); }
+/* Safer container sizing that never exceeds viewport, incl. padding */
+.container {
+  width: 100%;
+  max-width: min(1080px, calc(100% - var(--container-gutter) * 2));
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-gutter);
+  padding-right: var(--container-gutter);
+  box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  /* Guard against any horizontal scroll within sections */
+  .section .container { overflow-x: clip; }
+}
 </style></head>
 <body>
   <header class="hero">
@@ -1774,5 +1790,6 @@ html, body { overflow-x: clip; }
   </script>
 </body>
 </html>
+
 
 
