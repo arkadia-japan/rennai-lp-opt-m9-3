@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja" data-gtag-id="" data-pixel-id="">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Landing Page</title>
+    <meta name="description" content="" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="" />
+
+    <!-- OGP / Twitter -->
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:image" content="img/ogp.svg" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="img/ogp.svg" />
+    <meta name="theme-color" content="#0789C7" />
+
+    <!-- Favicon / Icons (dummy) -->
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="img/favicon.svg" />
+
+    <!-- GTM container ID will be read from this meta. Replace before launch. -->
+    <meta name="gtm-id" content="" />
+
+    <script>
+      (function(){
+        var html = document.documentElement;
+        var gaId = html && html.dataset ? html.dataset.gtagId : '';
+        if (gaId) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){ dataLayer.push(arguments); }
+          window.gtag = gtag;
+          var s = document.createElement('script');
+          s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(gaId);
+          document.head.appendChild(s);
+          gtag('js', new Date());
+          gtag('config', gaId, { send_page_view: true });
+        }
+        var pxId = html && html.dataset ? html.dataset.pixelId : '';
+        if (pxId) {
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          window.fbq('init', pxId); window.fbq('track', 'PageView');
+        }
+      })();
+    </script>
+
+    <!-- Performance: preconnect fonts and load only used family/weights -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" />
+    </noscript>
+
+    <link rel="preload" as="style" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <script>
+      // Initialize dataLayer early
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'lp_boot', ts: Date.now() });
+
+      // Inject GTM if meta provided
+      (function() {
+        var meta = document.querySelector('meta[name="gtm-id"]');
+        var gtmId = meta && meta.content && meta.content.trim();
+        if (!gtmId) return;
+        window.dataLayer.push({ event: 'gtm_init', gtmId: gtmId, ts: Date.now() });
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(gtmId);
+        document.head.appendChild(s);
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">メインコンテンツにスキップ</a>
+    <noscript><p style="padding:8px;background:#fee;border-bottom:1px solid #f99;color:#a00;text-align:center">このページはJavaScriptに依存しています。ブラウザの設定で有効にしてください。</p></noscript>
+
+    <div id="overlay-root" aria-hidden="true"></div>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <div class="brand">
+          <img id="brandLogo" alt="" aria-hidden="true" />
+        </div>
+        <nav class="header-cta">
+          <a href="#cta-primary" class="btn btn--sm btn--primary" data-cta-id="hdr"></a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main" role="main">
+      <section id="hero" class="section hero" aria-labelledby="hero-title">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1 id="hero-title" class="hero-title"></h1>
+            <p id="hero-sub" class="hero-sub"></p>
+            <ul id="hero-bullets" class="hero-bullets"></ul>
+          </div>
+          <div class="hero-form" id="cta-primary">
+            <!-- Form will be injected by script.js based on contents.md + form_spec.json -->
+            <div id="form-mount" aria-live="polite"></div>
+          </div>
+          <figure class="hero-media">
+            <picture id="hero-picture" hidden>
+              <source id="hero-src-avif" type="image/avif" />
+              <source id="hero-src-webp" type="image/webp" />
+              <img id="hero-img" alt="" width="1280" height="720" loading="eager" fetchpriority="high" decoding="async" />
+            </picture>
+          </figure>
+        </div>
+      </section>
+
+      <section id="lead" class="section section--lead" aria-labelledby="lead-title">
+        <div class="container">
+          <h2 id="lead-title" class="visually-hidden"></h2>
+          <div id="lead-text" class="lead-text"></div>
+        </div>
+      </section>
+
+      <section id="benefits" class="section section--benefits" aria-labelledby="benefits-title">
+        <div class="container">
+          <h2 id="benefits-title" class="visually-hidden"></h2>
+          <ul id="benefit-list" class="benefit-list"></ul>
+        </div>
+      </section>
+
+      <section id="curriculum" class="section section--curriculum" aria-labelledby="curriculum-title">
+        <div class="container">
+          <h2 id="curriculum-title" class="visually-hidden"></h2>
+          <div id="lessons"></div>
+        </div>
+      </section>
+
+      <section id="cta2" class="section section--cta">
+        <div class="container">
+          <h2 id="cta2-title" class="visually-hidden"></h2>
+          <button class="btn btn--lg btn--primary" data-cta-id="cta2" id="cta2-btn"></button>
+          <div id="cta2-note" class="cta-note"></div>
+        </div>
+      </section>
+
+      <section id="profile" class="section section--profile" aria-labelledby="profile-title">
+        <div class="container">
+          <h2 id="profile-title" class="visually-hidden"></h2>
+          <div id="profile-content" class="profile-content"></div>
+        </div>
+      </section>
+
+      <section id="faq" class="section section--faq" aria-labelledby="faq-title">
+        <div class="container">
+          <h2 id="faq-title" class="visually-hidden"></h2>
+          <div id="faq-list" class="faq-list"></div>
+        </div>
+      </section>
+
+      <section id="cta3" class="section section--cta">
+        <div class="container">
+          <h2 id="cta3-title" class="visually-hidden"></h2>
+          <button class="btn btn--lg btn--primary" data-cta-id="cta3" id="cta3-btn"></button>
+          <div id="cta3-note" class="cta-note"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="footer">
+      <div class="container">
+        <div id="footer-content" class="footer-content"></div>
+      </div>
+    </footer>
+
+    <div id="sticky-cta" class="sticky-cta" role="region" aria-label="固定CTA">
+      <button class="btn btn--primary btn--block" data-cta-id="sticky" id="sticky-cta-btn"></button>
+    </div>
+
+    <script defer src="js/main.js"></script>
+  </body>
+  </html>

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>令和の恋愛法則｜誠実な男性専門の恋愛ノウハウ</title>
+    <meta name="description" content="なぜ勉強や仕事はうまくいくのに恋愛だけがうまくいかないのか？モテる男を目指さず本命彼女から選ばれる『令和の恋愛法則』で、あなたらしく自然体で本命女性の唯一無二の男になれる誠実な男性専門の恋愛ノウハウを無料公開中。">
+    <meta property="og:title" content="令和の恋愛法則｜誠実な男性専門の恋愛ノウハウ">
+    <meta property="og:description" content="なぜ勉強や仕事はうまくいくのに恋愛だけがうまくいかないのか？モテる男を目指さず本命彼女から選ばれる『令和の恋愛法則』で、あなたらしく自然体で本命女性の唯一無二の男になれる誠実な男性専門の恋愛ノウハウを無料公開中。">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="令和の恋愛法則">
+
+    <style>
+        :root {
+            --color-white: #FFFFFF;
+            --color-main: #0789C7;
+            --color-accent1: #1f4b63;
+            --color-accent2: #f9ea59;
+            --color-text: #333333;
+            --color-text-light: #666666;
+            --color-dark: #1a1a1a;
+            --color-gradient-start: #667eea;
+            --color-gradient-end: #764ba2;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 24px;
+            --spacing-lg: 32px;
+            --spacing-xl: 48px;
+            --spacing-2xl: 64px;
+
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+            --radius-2xl: 24px;
+
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
+
+            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Meiryo", sans-serif;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.7;
+            color: var(--color-text);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.3; }
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(7, 137, 199, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .header__logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--color-main), var(--color-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .header__logo:hover {
+            transform: scale(1.05);
+        }
+
+        .main {
+            padding-top: var(--header-height);
+        }
+
+        .section {
+            padding: var(--spacing-xl) var(--spacing-sm);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.9) 100%);
+            backdrop-filter: blur(20px);
+            text-align: center;
+            padding: var(--spacing-2xl) var(--spacing-sm);
+            margin: var(--spacing-lg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero__title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-dark);
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero__subtitle {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-main), var(--color-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.5;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero__description {
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-2xl);
+            line-height: 1.7;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-end) 100%);
+            color: var(--color-white);
+            text-align: center;
+            padding: var(--spacing-2xl) var(--spacing-sm);
+            margin: var(--spacing-lg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        }
+
+        .cta__title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta__button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-accent2), #fbbf24);
+            color: var(--color-dark);
+            padding: var(--spacing-md) var(--spacing-xl);
+            border-radius: var(--radius-xl);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-md);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta__button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .cta__button::before {
+            content: '🚀';
+            margin-right: 8px;
+        }
+
+        .cta__note {
+            font-size: 1rem;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .countdown {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--color-accent2);
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border-radius: var(--radius-lg);
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .benefits {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: var(--spacing-2xl) var(--spacing-sm);
+            margin: var(--spacing-lg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .benefits__title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+            background: linear-gradient(135deg, var(--color-main), var(--color-gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .benefits__title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+            border-radius: 2px;
+        }
+
+        .benefits__subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            line-height: 1.7;
+        }
+
+        .benefits__description {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-2xl);
+            line-height: 1.8;
+        }
+
+        .episodes {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+        }
+
+        .episode {
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .episode:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .episode::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-gradient-start), var(--color-gradient-end));
+        }
+
+        .episode__header {
+            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+            color: var(--color-white);
+            padding: var(--spacing-md) var(--spacing-md);
+            position: relative;
+        }
+
+        .episode__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .episode__content {
+            padding: var(--spacing-lg);
+        }
+
+        .episode__list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .episode__item {
+            margin-bottom: var(--spacing-sm);
+            position: relative;
+            padding-left: var(--spacing-md);
+            font-size: 1rem;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .episode__item::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: var(--color-gradient-start);
+            font-size: 1.2rem;
+        }
+
+        .episode__item:hover {
+            color: var(--color-gradient-start);
+            transform: translateX(5px);
+        }
+
+        .profile {
+            background: linear-gradient(135deg, rgba(31, 75, 99, 0.95) 0%, rgba(26, 63, 87, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            color: var(--color-white);
+            padding: var(--spacing-2xl) var(--spacing-sm);
+            margin: var(--spacing-lg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .profile__title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: var(--spacing-lg);
+            color: var(--color-accent2);
+            position: relative;
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .profile__title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-accent2), #fbbf24);
+            border-radius: 2px;
+        }
+
+        .profile__content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .profile__achievements {
+            margin-top: var(--spacing-lg);
+            font-size: 1rem;
+            line-height: 1.7;
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--color-accent2);
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, var(--color-dark) 0%, #2d3748 100%);
+            color: var(--color-white);
+            text-align: center;
+            padding: var(--spacing-2xl) var(--spacing-sm);
+            margin: var(--spacing-lg);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-success), var(--color-warning));
+        }
+
+        .final-cta__note {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+            font-weight: 700;
+            color: var(--color-accent2);
+        }
+
+        .final-cta__button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--color-success), #059669);
+            color: var(--color-white);
+            padding: var(--spacing-lg) var(--spacing-2xl);
+            border-radius: var(--radius-xl);
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .final-cta__button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 0 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .final-cta__button::before {
+            content: '🎯';
+            margin-right: 10px;
+        }
+
+        .footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: var(--spacing-2xl) var(--spacing-lg);
+            }
+
+            .hero {
+                padding: calc(var(--spacing-2xl) * 1.5) var(--spacing-lg);
+            }
+
+            .hero__title {
+                font-size: 2.6rem;
+            }
+
+            .hero__subtitle {
+                font-size: 2rem;
+            }
+
+            .episodes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta__title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .episodes {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero__title {
+                font-size: 3rem;
+            }
+
+            .hero__subtitle {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-end));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#hero" class="header__logo">令和の恋愛法則</a>
+    </header>
+
+    <main class="main">
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1 class="hero__title">
+                    なぜ、勉強や仕事はうまくいってるのに、<br>
+                    恋愛だけがうまくいかないのか？
+                </h1>
+                <h2 class="hero__subtitle">
+                    "モテる男"を目指さず<br>
+                    本命彼女から選ばれる<br>
+                    『令和の恋愛法則』
+                </h2>
+                <p class="hero__description">
+                    あなたらしく自然体で<br>
+                    本命女性の『唯一無二』の男になれる<br>
+                    誠実な男性専門の恋愛ノウハウとは？
+                </p>
+            </div>
+        </section>
+
+        <section id="cta" class="cta">
+            <div class="container">
+                <h2 class="cta__title">
+                    たったの3ステップで<br>
+                    簡単に実践できる恋愛講座を<br>
+                    今だけ無料で公開中！
+                </h2>
+                <a href="#cta" class="cta__button" aria-label="無料オンライン講座を今すぐ受け取る">
+                    今すぐセミナーを観る
+                </a>
+                <p class="cta__note">
+                    ※今すぐ無料で観ることができます
+                </p>
+                <div class="countdown" id="countdown">
+                    公開まで残り…●時間●分●秒
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="benefits">
+            <div class="container">
+                <h2 class="benefits__title">
+                    【無料動画講座】7日間で学ぶ『THE ONLY ONE』メソッド
+                </h2>
+                <p class="benefits__subtitle">
+                    巷のモテテクに疲れた、誠実なあなたへ。
+                </p>
+                <p class="benefits__description">
+                    「優しさ」を"選ばれる理由"に変える、<br>
+                    全7回の集中プログラムです。
+                </p>
+
+                <section id="episodes" class="episodes">
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第1話：【暴露】モテる男を目指すほど恋愛がうまくいかない衝撃の理由</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">今、マッチングアプリがチャンスな理由とは</li>
+                                <li class="episode__item">巷の恋愛テクニックが、あなたの魅力を逆に消してしまう理由とは</li>
+                                <li class="episode__item">ライバル不在の土俵で、「あなたじゃなきゃダメ」と求められる戦略とは</li>
+                                <li class="episode__item">女性が本命を選ぶ時に無意識に求める、たった一つの"決定的な要素"とは</li>
+                                <li class="episode__item">誰かのモノマネではない、あなただけの"本音"が最強の武器にする方法</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第2話：センス不要！科学的に「唯一無二の魅力」を構築する外見の磨き方</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">9割の男性が知らない、第一印象の0.5秒で決まる残酷な現実</li>
+                                <li class="episode__item">イケメンじゃなくても本命女性に選ばれる外見の特徴</li>
+                                <li class="episode__item">ファッションで"流行"や"オシャレ"を追ってはいけない理由とは</li>
+                                <li class="episode__item">センスのいらない唯一無二の外見改善方法</li>
+                                <li class="episode__item">マッチングアプリの反応が10倍に跳ね上がった、コンサル生の外見改善事例</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第3話：恋愛経験が少ない男でも強みを活かして月に10人以上の女性とデートできる出会い戦略</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">普通にマッチングアプリをやっても出会えない残酷な理由とは</li>
+                                <li class="episode__item">美人な女性ほど、実は「誠実な男性」に飢えている理由とは</li>
+                                <li class="episode__item">ライバル不在の市場で、あなたの強みを活かして"1人勝ちできる"場所の見つけ方</li>
+                                <li class="episode__item">あなたの誠実さを求める女性が集まる、おすすめマッチングアプリとは</li>
+                                <li class="episode__item">あなたの"人柄"が伝わるだけで、女性から会いたいと言われるプロフ作成術</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第4話：トーク力0でもタイプの女性から「また会いたい」と虜にさせるデート会話術</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">女性との会話に「面白さ」やトーク力がいらない理由とは</li>
+                                <li class="episode__item">初対面でも心を開かせるNLP応用会話術</li>
+                                <li class="episode__item">女性の心の奥深くにアプローチする「深層心理コミュニケーション」の秘密</li>
+                                <li class="episode__item">女性が「私のこと、なんでそんなにわかるの？」と驚く、魔法の質問スキル</li>
+                                <li class="episode__item">相手の自己重要感を満たし、「あなたともっと話したい」と思わせる会話の極意</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第5話：恋愛経験少なくてもゼロから本命彼女を作る『けいじ式ロードマップ』</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">なぜ、優れたノウハウを知っても9割の人が挫折するのか？</li>
+                                <li class="episode__item">僕が1000万円以上を投じて身につけた成功法則の全貌を公開</li>
+                                <li class="episode__item">ロジカルに恋愛を攻略する秘密の奥義「恋愛の方程式」とは</li>
+                                <li class="episode__item">最小限の努力で、最短最速で本命彼女を作るための戦略とは</li>
+                                <li class="episode__item">他の業界では当たり前なのに、なぜか恋愛業界では誰も教えない成功法則</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第6話：【9割の男が変われない真の理由】美女にアプローチできるようになる 『けいじ式マインド理論』</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">好きな女性の前だと緊張してしまう現状維持システムをぶっ壊す方法</li>
+                                <li class="episode__item">自信がなくてコンプレックスまみれの男が一瞬で自分を変える方法</li>
+                                <li class="episode__item">あなたの成功を無意識に妨害する真の敵とは</li>
+                                <li class="episode__item">1人では変われない男でも成功できる環境の条件とは</li>
+                                <li class="episode__item">大きな目標を着実に達成する行動科学理論</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="episode">
+                        <div class="episode__header">
+                            <h3 class="episode__title">第7話：本命女性と付き合う確率を100％にするたった1つの方法</h3>
+                        </div>
+                        <div class="episode__content">
+                            <ul class="episode__list">
+                                <li class="episode__item">あなたの失敗を成功への最短ルートに変える「最終奥義」</li>
+                                <li class="episode__item">モテる友人のアドバイスを絶対に聞いてはいけない理由</li>
+                                <li class="episode__item">同じ失敗を無限に繰り返してしまう無限地獄のループを抜け出す方法</li>
+                                <li class="episode__item">なぜ、僕のコンサルでは「美女コンサルタント」を揃えているのか？</li>
+                                <li class="episode__item">恋愛コンサルティングで彼女ゲットや結婚する男が続出している秘密</li>
+                            </ul>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </section>
+
+        <section id="final-cta" class="final-cta">
+            <div class="container">
+                <p class="final-cta__note">
+                    ＼大好評につき、配布は予告なく終了します／
+                </p>
+                <a href="#cta" class="final-cta__button" aria-label="無料オンライン講座を今すぐ受け取る">
+                    今すぐ無料でオンライン講座を受け取る
+                </a>
+            </div>
+        </section>
+
+        <section id="profile" class="profile">
+            <div class="container">
+                <h2 class="profile__title">
+                    けいじ｜「いい人止まり」を"唯一無二の魅力"に変える恋愛戦略家
+                </h2>
+                <div class="profile__content">
+                    <p>26年間「いい人」止まりの状態から<br>
+                    独学で恋愛ノウハウを構築。</p>
+
+                    <p>アプリやストリートで、<br>
+                    250人以上の女性を口説くことに成功した後、<br>
+                    1人の愛する女性と出会い結婚。</p>
+
+                    <p>圧倒的な実践経験と脳科学・心理学を融合し<br>
+                    「誠実さや優しさが武器になる」<br>
+                    独自メソッド『THE ONLY ONE』を確立。</p>
+
+                    <div class="profile__achievements">
+                        <p>・某有名アイドルとの交際を実現（30代・自営業）<br>
+                        ・バツイチから20代の美人女性と結婚（30代・公務員）<br>
+                        ・童貞から半年で10人以上の女性と関係構築、理想の彼女をGET（25歳・会社員）</p>
+
+                        <p>など、劇的な成果報告が毎月のように届いている。</p>
+
+                        <p>ミッションは「誠実な人が報われる社会を創る」こと。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 令和の恋愛法則. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            'use strict';
+
+            const deadline = new Date('2025-12-31T23:59:59+09:00');
+
+            function updateCountdown() {
+                const now = new Date();
+                const timeLeft = deadline - now;
+
+                if (timeLeft <= 0) {
+                    document.getElementById('countdown').textContent = '現在、公開中です。';
+                    return;
+                }
+
+                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').textContent =
+                    `公開まで残り…${hours}時間${minutes}分${seconds}秒`;
+            }
+
+            function initSmoothScroll() {
+                const links = document.querySelectorAll('a[href^="#"]');
+                links.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerHeight = document.querySelector('.header').offsetHeight;
+                            const targetPosition = targetElement.offsetTop - headerHeight;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                updateCountdown();
+                setInterval(updateCountdown, 1000);
+                initSmoothScroll();
+            });
+        })();
+    </script>
+</body>
+</html>

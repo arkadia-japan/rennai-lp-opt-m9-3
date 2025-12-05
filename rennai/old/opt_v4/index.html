@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>令和の恋愛法則 - 本命彼女から選ばれる恋愛ノウハウ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --blue: #0789C7;
+            --dark-green: #1f4b63;
+            --yellow: #f9ea59;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* First View Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-green), #2c5f7a, var(--blue));
+            background-size: 200% 200%;
+            animation: gradientAnimation 15s ease infinite;
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, var(--yellow), #ffd700);
+            color: var(--dark-green);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .hero-description {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* CTA Sections */
+        .cta-section {
+            padding: 60px 0;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .cta-section.yellow-bg {
+            background: linear-gradient(45deg, var(--yellow), #fff5a5);
+        }
+
+        .cta-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--blue), #0a9de8);
+            color: var(--white);
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(7, 137, 199, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(7, 137, 199, 0.4);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-note {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            margin: 30px 0;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: inline-block;
+        }
+
+        .countdown-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: var(--dark-green);
+        }
+
+        .countdown-timer {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 15px 10px;
+            border-radius: 8px;
+            min-width: 60px;
+        }
+
+        .countdown-number {
+            font-size: 24px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Course Section */
+        .course-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, var(--white) 100%);
+            border-top: 1px solid #e9ecef;
+        }
+
+        .course-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+        }
+
+        .course-subtitle {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 60px;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .course-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .course-item {
+            background: var(--white);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 5px solid var(--blue);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            overflow: hidden;
+        }
+
+        .course-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            cursor: pointer;
+            padding: 30px;
+            padding-bottom: 20px;
+        }
+
+        .course-item-header-content {
+            flex: 1;
+        }
+
+        .accordion-icon {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--blue);
+            transition: transform 0.4s ease;
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .course-content-wrapper {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .course-item.active .course-content-wrapper {
+            max-height: 600px;
+        }
+
+        .course-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .course-item.active {
+            border-left-color: var(--yellow);
+        }
+
+        .course-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .course-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-number {
+            background: var(--blue);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .course-item-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: var(--dark-green);
+        }
+
+        .course-content {
+            color: #555;
+            padding: 0 30px 30px 30px;
+        }
+
+        .course-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .course-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .course-content li::before {
+            content: '●';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 80px 0;
+            background: var(--white);
+            border-top: 1px solid #e9ecef;
+        }
+
+        .profile-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--blue);
+        }
+
+        .profile-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-green);
+        }
+
+        .profile-content p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .achievements {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid var(--yellow);
+        }
+
+        .achievements h4 {
+            color: var(--dark-green);
+            margin-bottom: 15px;
+        }
+
+        .mission {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--yellow);
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-green);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 28px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .course-title {
+                font-size: 28px;
+            }
+
+            .profile-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .profile-image {
+                margin: 0 auto;
+            }
+
+            .profile-content {
+                text-align: left;
+            }
+
+            .profile-content h3 {
+                text-align: center;
+            }
+
+            .countdown-timer {
+                gap: 10px;
+            }
+
+            .countdown-item {
+                min-width: 50px;
+                padding: 10px 8px;
+            }
+
+            .countdown-number {
+                font-size: 20px;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="hero-subtitle">なぜ、勉強や仕事はうまくいってるのに、恋愛だけがうまくいかないのか？</p>
+                <h1 class="hero-title">
+                    "モテる男"を目指さず<br>
+                    本命彼女から選ばれる<br>
+                    『<span class="highlight">令和の恋愛法則</span>』
+                </h1>
+                <p class="hero-description">
+                    あなたらしく自然体で本命女性の『唯一無二』の男になれる<br>
+                    誠実な男性専門の恋愛ノウハウとは？
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section 1 -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">
+                たったの3ステップで簡単に実践できる<br>
+                恋愛講座を今だけ無料で公開中！
+            </h2>
+
+            <div class="countdown">
+                <div class="countdown-title">公開まで残り…</div>
+                <div class="countdown-timer">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-label">日</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-label">時間</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-label">分</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-label">秒</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#course" class="cta-button">今すぐセミナーを観る</a>
+            <p class="cta-note">※今すぐ無料で観ることができます</p>
+        </div>
+    </section>
+
+    <!-- Course Section -->
+    <section class="course-section" id="course">
+        <div class="container">
+            <h2 class="course-title fade-in">
+                【無料動画講座】7日間で学ぶ『THE ONLY ONE』メソッド
+            </h2>
+            <p class="course-subtitle fade-in">
+                巷のモテテクに疲れた、誠実なあなたへ。<br>
+                「優しさ」を"選ばれる理由"に変える、全7回の集中プログラムです。
+            </p>
+
+            <div class="course-list">
+                <div class="course-item active">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">1</div>
+                            <h3 class="course-item-title">【暴露】モテる男を目指すほど恋愛がうまくいかない衝撃の理由</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>今、マッチングアプリがチャンスな理由とは</li>
+                                <li>巷の恋愛テクニックが、あなたの魅力を逆に消してしまう理由とは</li>
+                                <li>ライバル不在の土俵で、「あなたじゃなきゃダメ」と求められる戦略とは</li>
+                                <li>女性が本命を選ぶ時に無意識に求める、たった一つの"決定的な要素"とは</li>
+                                <li>誰かのモノマネではない、あなただけの"本音"が最強の武器にする方法</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">2</div>
+                            <h3 class="course-item-title">センス不要！科学的に「唯一無二の魅力」を構築する外見の磨き方</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>9割の男性が知らない、第一印象の0.5秒で決まる残酷な現実</li>
+                                <li>イケメンじゃなくても本命女性に選ばれる外見の特徴</li>
+                                <li>ファッションで"流行"や"オシャレ"を追ってはいけない理由とは</li>
+                                <li>センスのいらない唯一無二の外見改善方法</li>
+                                <li>マッチングアプリの反応が10倍に跳ね上がった、コンサル生の外見改善事例</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">3</div>
+                            <h3 class="course-item-title">恋愛経験が少ない男でも強みを活かして月に10人以上の女性とデートできる出会い戦略</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>普通にマッチングアプリをやっても出会えない残酷な理由とは</li>
+                                <li>美人な女性ほど、実は「誠実な男性」に飢えている理由とは</li>
+                                <li>ライバル不在の市場で、あなたの強みを活かして"1人勝ちできる"場所の見つけ方</li>
+                                <li>あなたの誠実さを求める女性が集まる、おすすめマッチングアプリとは</li>
+                                <li>あなたの"人柄"が伝わるだけで、女性から会いたいと言われるプロフ作成術</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">4</div>
+                            <h3 class="course-item-title">トーク力0でもタイプの女性から「また会いたい」と虜にさせるデート会話術</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>女性との会話に「面白さ」やトーク力がいらない理由とは</li>
+                                <li>初対面でも心を開かせるNLP応用会話術</li>
+                                <li>女性の心の奥深くにアプローチする「深層心理コミュニケーション」の秘密</li>
+                                <li>女性が「私のこと、なんでそんなにわかるの？」と驚く、魔法の質問スキル</li>
+                                <li>相手の自己重要感を満たし、「あなたともっと話したい」と思わせる会話の極意</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">5</div>
+                            <h3 class="course-item-title">恋愛経験少なくてもゼロから本命彼女を作る『けいじ式ロードマップ』</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>なぜ、優れたノウハウを知っても9割の人が挫折するのか？</li>
+                                <li>僕が1000万円以上を投じて身につけた成功法則の全貌を公開</li>
+                                <li>ロジカルに恋愛を攻略する秘密の奥義「恋愛の方程式」とは</li>
+                                <li>最小限の努力で、最短最速で本命彼女を作るための戦略とは</li>
+                                <li>他の業界では当たり前なのに、なぜか恋愛業界では誰も教えない成功法則</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">6</div>
+                            <h3 class="course-item-title">【9割の男が変われない真の理由】美女にアプローチできるようになる 『けいじ式マインド理論』</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>好きな女性の前だと緊張してしまう現状維持システムをぶっ壊す方法</li>
+                                <li>自信がなくてコンプレックスまみれの男が一瞬で自分を変える方法</li>
+                                <li>あなたの成功を無意識に妨害する真の敵とは</li>
+                                <li>1人では変われない男でも成功できる環境の条件とは</li>
+                                <li>大きな目標を着実に達成する行動科学理論</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item">
+                    <div class="course-item-header">
+                        <div class="course-item-header-content">
+                            <div class="course-number">7</div>
+                            <h3 class="course-item-title">本命女性と付き合う確率を100％にするたった1つの方法</h3>
+                        </div>
+                        <div class="accordion-icon">+</div>
+                    </div>
+                    <div class="course-content-wrapper">
+                        <div class="course-content">
+                            <ul>
+                                <li>あなたの失敗を成功への最短ルートに変える「最終奥義」</li>
+                                <li>モテる友人のアドバイスを絶対に聞いてはいけない理由</li>
+                                <li>同じ失敗を無限に繰り返してしまう無限地獄のループを抜け出す方法</li>
+                                <li>なぜ、僕のコンサルでは「美女コンサルタント」を揃えているのか？</li>
+                                <li>恋愛コンサルティングで彼女ゲットや結婚する男が続出している秘密</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section 2 -->
+    <section class="cta-section yellow-bg">
+        <div class="container">
+            <h2 class="cta-title">
+                ＼大好評につき、配布は予告なく終了します／
+            </h2>
+            <a href="#course" class="cta-button">今すぐ無料でオンライン講座を受け取る</a>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <div>
+                    <img src="https://placehold.co/150x150/1f4b63/ffffff?text=Keiji" alt="けいじ" class="profile-image">
+                </div>
+                <div class="profile-content">
+                    <h3>けいじ｜「いい人止まり」を"唯一無二の魅力"に変える恋愛戦略家</h3>
+
+                    <p>26年間「いい人」止まりの状態から独学で恋愛ノウハウを構築。アプリやストリートで、250人以上の女性を口説くことに成功した後、1人の愛する女性と出会い結婚。</p>
+
+                    <p>圧倒的な実践経験と脳科学・心理学を融合し「誠実さや優しさが武器になる」独自メソッド『THE ONLY ONE』を確立。</p>
+
+                    <div class="achievements">
+                        <h4>実績</h4>
+                        <ul>
+                            <li>某有名アイドルとの交際を実現（30代・自営業）</li>
+                            <li>バツイチから20代の美人女性と結婚（30代・公務員）</li>
+                            <li>童貞から半年で10人以上の女性と関係構築、理想の彼女をGET（25歳・会社員）</li>
+                        </ul>
+                        <p>など、劇的な成果報告が毎月のように届いている。</p>
+                    </div>
+
+                    <div class="mission">
+                        <strong>ミッションは「誠実な人が報われる社会を創る」こと。</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Keiji. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            const distance = tomorrow.getTime() - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+            }
+        }
+
+        // Update countdown every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            ) || (
+                rect.top <= window.innerHeight * 0.75 &&
+                rect.bottom >= 0
+            );
+        }
+
+        function handleScrollAnimation() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            const courseItems = document.querySelectorAll('.course-item');
+
+            fadeElements.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.classList.add('visible');
+                }
+            });
+
+            courseItems.forEach((item, index) => {
+                if (isElementInViewport(item)) {
+                    setTimeout(() => {
+                        item.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }
+
+        // Initial check
+        handleScrollAnimation();
+
+        // Check on scroll
+        window.addEventListener('scroll', handleScrollAnimation);
+        window.addEventListener('resize', handleScrollAnimation);
+
+        // Add loading animation to course items
+        window.addEventListener('load', function() {
+            const courseItems = document.querySelectorAll('.course-item');
+            courseItems.forEach((item, index) => {
+                item.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.course-item-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.closest('.course-item');
+                    const isActive = item.classList.contains('active');
+
+                    // Close all other items
+                    document.querySelectorAll('.course-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active', !isActive);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+columns:
+  date: "お客様対応(マニュアル)"
+  in_amount: "Unnamed: 1"
+  out_amount: "Unnamed: 3" 
+  memo: "Unnamed: 4"
+  account: "Unnamed: 9"
+  activity: "Unnamed: 10"
+  inout: "Unnamed: 6"
+
+date_format: "%Y-%m-%d %H:%M:%S"
+
+account_map:
+  売上高: 売上
+  仕入高: 仕入
+  外注費: 外注費
+  交通費: 交通費
+  通信費: 通信費
+  広告宣伝費: 広告宣伝費
+  消耗品費: 消耗品費
+  水道光熱費: 水道光熱費
+  地代家賃: 地代家賃
+
+category_map:
+  売上: revenue
+  売上高: revenue
+  外注費: expense
+  交通費: expense
+  通信費: expense
+  広告宣伝費: expense
+  消耗品費: expense
+  水道光熱費: expense
+  地代家賃: expense
+
+expense_include:
+  account_regex: ["外注費", "交通費"]
+
+expense_exclude:
+  memo_regex: []
+
+revenue_exclude:
+  memo_regex: []
+
+activity_exclude_values: ["要設定"]

@@ -1,0 +1,54 @@
+{
+  "model": "gpt-4",
+  "maxTokens": 2048,
+  "temperature": 0.1,
+  "topP": 1.0,
+  "frequencyPenalty": 0.0,
+  "presencePenalty": 0.0,
+  "outputDir": "./output",
+  "languages": {
+    "javascript": {
+      "extension": ".js",
+      "template": "// Generated JavaScript code\n"
+    },
+    "typescript": {
+      "extension": ".ts",
+      "template": "// Generated TypeScript code\n"
+    },
+    "python": {
+      "extension": ".py",
+      "template": "# Generated Python code\n"
+    },
+    "java": {
+      "extension": ".java",
+      "template": "// Generated Java code\n"
+    },
+    "csharp": {
+      "extension": ".cs",
+      "template": "// Generated C# code\n"
+    }
+  },
+  "windsurf": {
+    "integration": true,
+    "autoSave": true,
+    "formatOnSave": true,
+    "linting": true,
+    "suggestions": {
+      "enabled": true,
+      "threshold": 0.7,
+      "maxSuggestions": 5
+    },
+    "shortcuts": {
+      "generate": "Ctrl+Shift+G",
+      "explain": "Ctrl+Shift+E",
+      "refactor": "Ctrl+Shift+R",
+      "optimize": "Ctrl+Shift+O"
+    }
+  },
+  "prompts": {
+    "codeGeneration": "Generate {language} code for: {description}",
+    "codeExplanation": "Explain this {language} code: {code}",
+    "codeRefactoring": "Refactor this {language} code to improve readability and performance: {code}",
+    "bugFix": "Fix bugs in this {language} code: {code}"
+  }
+}

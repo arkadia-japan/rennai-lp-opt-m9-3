@@ -1,0 +1,53 @@
+columns:
+  date: "お客様対応(マニュアル)"  # 列0: 日付
+  in_amount: "Unnamed: 1"        # 列1: 入金額
+  out_amount: "Unnamed: 3"       # 列3: 出金額
+  memo: "Unnamed: 4"             # 列4: 摘要
+  inout: "Unnamed: 6"            # 列6: 入出金区分
+  account: "Unnamed: 9"          # 列9: 勘定科目
+  activity: "Unnamed: 10"        # 列10: アクティビティ
+
+date_format: "%Y-%m-%d"
+
+# 勘定科目のマッピング
+account_map:
+  売上高: 売上
+  仕入高: 仕入
+  交通費: 交通費
+  通信費: 通信費
+  広告宣伝費: 広告宣伝費
+  消耗品費: 消耗品費
+
+# カテゴリマッピング
+category_map:
+  売上: revenue
+  売上高: revenue
+  仕入: expense
+  仕入高: expense
+  交通費: expense
+  通信費: expense
+  広告宣伝費: expense
+  消耗品費: expense
+
+# 費用として扱う条件
+expense_include:
+  account_regex: ["仕入", "交通費", "通信費", "広告", "消耗品", "水道光熱費", "地代家賃"]
+  memo_regex: ["手数料", "振込手数料", "ATM", "カード決済"]
+  inout_regex: ["出金", "支払"]
+
+# 除外条件
+expense_exclude:
+  memo_regex: ["プライベート", "個人"]
+
+revenue_exclude:
+  memo_regex: ["借入", "ローン", "融資"]
+
+# アクティビティ除外値
+activity_exclude_values: ["要設定"]
+
+# PDFヘッダー設定
+pdf_has_header: true
+
+# 通貨記号の除去
+strip_currency_symbols: ["¥", "円", "JPY"]
+parse_parentheses_negative: true

@@ -1,0 +1,35 @@
+[project]
+name = "acccli"
+version = "0.1.0"
+description = "Accounting data aggregation CLI (aggregate and validate)."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Your Team" }]
+license = { text = "Proprietary" }
+dependencies = [
+  "typer>=0.12",
+  "pydantic>=2.4",
+  "PyYAML>=6.0",
+  "pandas>=2.0",
+  "openpyxl>=3.1",
+]
+
+[project.scripts]
+acccli = "acccli.cli:app"
+arkadia-bookkeeping = "arkadia_bookkeeping.cli:app"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+pdf = [
+  "pdfplumber>=0.11",
+]
+test = [
+  "pytest>=7.0",
+]

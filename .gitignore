@@ -30,3 +30,9 @@ npm-debug.log*
 
 # Logs
 *.log
+
+# Secret files
+credentials.json
+token.pickle
+*.env
+!.env.sample

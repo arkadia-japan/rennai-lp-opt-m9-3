@@ -1,0 +1,37 @@
+{
+  "codex-cli": {
+    "enabled": true,
+    "autoComplete": true,
+    "suggestions": true,
+    "commands": {
+      "generate": {
+        "command": "codex-cli generate",
+        "description": "Codexを使用してコードを生成",
+        "shortcut": "Ctrl+Shift+G"
+      },
+      "init": {
+        "command": "codex-cli init",
+        "description": "Codex CLIを初期化",
+        "shortcut": "Ctrl+Shift+I"
+      }
+    },
+    "integration": {
+      "terminal": true,
+      "editor": true,
+      "fileExplorer": true
+    },
+    "ai": {
+      "model": "gpt-4",
+      "temperature": 0.1,
+      "maxTokens": 2048,
+      "contextWindow": 4096
+    }
+  },
+  "extensions": {
+    "codex-cli": {
+      "path": "./bin/codex-cli.js",
+      "type": "cli",
+      "autoLoad": true
+    }
+  }
+}

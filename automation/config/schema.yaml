@@ -1,0 +1,51 @@
+date_format: "%Y/%m/%d"
+pdf_has_header: true
+
+columns:
+  date: [日付, 取引日, ご利用日]
+  account: [科目, 勘定科目]
+  amount: [金額, ご利用金額]
+  memo: [摘要, 内訳, 内容, メモ]
+  inout: [入出金区分, 区分, IN/OUT]
+  activity: [アクティビティ]
+  remarks: [備考]
+  revenue_flag: [種別, 区分]
+  in_amount: [入金額, 受け取り金額, チャージ金額]
+  out_amount: [出金額, 支払金額]
+
+revenue_flag_values: ["売上入金"]
+activity_exclude_values: ["要設定", "未選択", "未設定"]
+
+expense_include:
+  memo_regex: ["返済|ローン返済|元利金返済", "手数料|fee"]
+
+expense_exclude:
+  memo_regex: ["出金プライベート利用|私用|プライベート"]
+
+revenue_exclude:
+  memo_regex: ["借入|融資|ローン|貸付|入金借入\)"]
+
+templates: []
+
+excel:
+  default_sheet_mapping:
+    date: ["日付","取引日","DATE"]
+    description: ["摘要","内容","メモ","備考"]
+    inout: ["入出金区分","区分","IN/OUT"]
+    amount: ["金額","金額(円)","AMOUNT"]
+    activity: ["アクティビティ","G","ACTIVITY"]
+    note: ["備考","メモ"]
+  boolean_values:
+    selected: ["選択","選定","Yes","Y","true","TRUE"]
+
+rules:
+  loan_keywords_in_desc: ["借入","融資","ローン","貸付","入金借入)"]
+  private_spend_token: "出金プライベート利用"
+  repayment_keywords: ["返済","ローン返済","元利金返済"]
+  sales_activity_token: "売上入金"
+  activity_not_set_token: "要設定"
+
+dedupe:
+  key: ["date","amount","description"]
+  window_days: 2
+

@@ -1,0 +1,16 @@
+{
+  "endpoint": "https://example.com/api/subscribe",
+  "method": "POST",
+  "fields": {
+    "email": {"required": true, "type": "email"},
+    "name": {"required": false, "type": "string"}
+  },
+  "hidden_from_url": ["campaign_id", "ad_set", "gclid", "fbclid", "utm_source", "utm_medium", "utm_campaign"],
+  "consent_checkbox": {
+    "id": "consent",
+    "label": "プライバシーポリシーに同意します"
+  },
+  "success_redirect": "/thanks.html",
+  "error_behavior": "inline"
+}
+

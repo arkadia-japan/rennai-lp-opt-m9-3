@@ -1,0 +1,3 @@
+[console_scripts]
+acccli = acccli.cli:app
+arkadia-bookkeeping = arkadia_bookkeeping.cli:app
