@@ -142,10 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     closeTriggers.forEach((trigger) => {
-      trigger.addEventListener('click', (event) => {
+      const onCloseClick = (event) => {
         event.preventDefault();
+        // Ensure other handlers don't block closing
+        if (typeof event.stopPropagation === 'function') {
+          event.stopPropagation();
+        }
         closeModal();
-      });
+      };
+      // Use capture to run before any bubbling/capturing listeners from external scripts
+      try {
+        trigger.addEventListener('click', onCloseClick, { capture: true });
+      } catch (e) {
+        // Fallback for very old browsers
+        trigger.addEventListener('click', onCloseClick, true);
+      }
     });
   }
 
