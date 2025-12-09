@@ -1186,8 +1186,8 @@ body.modal-open {
   position: absolute;
   top: 16px;
   right: 16px;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 999px;
   border: none;
   background: rgba(11, 45, 99, 0.08);
@@ -1196,6 +1196,10 @@ body.modal-open {
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
+  /* Ensure the close button stays above any form content on small screens */
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .form-modal__close:hover,
@@ -1490,7 +1494,8 @@ body.modal-open {
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
-    padding: 56px 0 72px;
+    /* Remove unnecessary top space on mobile */
+    padding: 0;
   }
 
   .hero__content {

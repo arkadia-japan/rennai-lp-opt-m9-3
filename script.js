@@ -141,23 +141,53 @@ document.addEventListener('DOMContentLoaded', () => {
       button.addEventListener('click', openModal);
     });
 
+    // Direct listeners on close triggers (capture + multiple input types)
     closeTriggers.forEach((trigger) => {
-      const onCloseClick = (event) => {
+      const onClose = (event) => {
         event.preventDefault();
-        // Ensure other handlers don't block closing
-        if (typeof event.stopPropagation === 'function') {
+        if (typeof event.stopImmediatePropagation === 'function') {
+          event.stopImmediatePropagation();
+        } else if (typeof event.stopPropagation === 'function') {
           event.stopPropagation();
         }
         closeModal();
       };
-      // Use capture to run before any bubbling/capturing listeners from external scripts
+
+      const options = { capture: true };
       try {
-        trigger.addEventListener('click', onCloseClick, { capture: true });
+        ['click', 'pointerup', 'touchend'].forEach((type) => {
+          trigger.addEventListener(type, onClose, options);
+        });
       } catch (e) {
-        // Fallback for very old browsers
-        trigger.addEventListener('click', onCloseClick, true);
+        ['click', 'pointerup', 'touchend'].forEach((type) => {
+          trigger.addEventListener(type, onClose, true);
+        });
       }
     });
+
+    // Defensive: delegated capture listener to survive global interceptors
+    const delegatedClose = (event) => {
+      if (!modal.classList.contains('is-open')) return;
+      const target = event.target && (event.target.closest ? event.target.closest('[data-modal-close]') : null);
+      if (target && modal.contains(target)) {
+        event.preventDefault();
+        if (typeof event.stopImmediatePropagation === 'function') {
+          event.stopImmediatePropagation();
+        } else if (typeof event.stopPropagation === 'function') {
+          event.stopPropagation();
+        }
+        closeModal();
+      }
+    };
+    try {
+      document.addEventListener('click', delegatedClose, { capture: true });
+      document.addEventListener('pointerup', delegatedClose, { capture: true });
+      document.addEventListener('touchend', delegatedClose, { capture: true });
+    } catch (e) {
+      document.addEventListener('click', delegatedClose, true);
+      document.addEventListener('pointerup', delegatedClose, true);
+      document.addEventListener('touchend', delegatedClose, true);
+    }
   }
 
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
