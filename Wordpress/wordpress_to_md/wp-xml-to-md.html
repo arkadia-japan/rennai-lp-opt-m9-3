@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordPress XML → Markdown 変換ツール</title>
+    <script src="https://cdn.jsdelivr.net/npm/turndown@7.1.2/dist/turndown.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .upload-section {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .upload-section:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .upload-section.drag-over {
+            border-color: #667eea;
+            background: #e3e9ff;
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .drag-text {
+            color: #6c757d;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        input[type="file"] {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            font-weight: 500;
+        }
+
+        .file-input-label:hover {
+            background: #5568d3;
+        }
+
+        .file-name {
+            color: #495057;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .convert-btn {
+            width: 100%;
+            padding: 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .convert-btn:hover:not(:disabled) {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .convert-btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .log-section {
+            background: #212529;
+            color: #00ff00;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+        }
+
+        .log-entry.error {
+            color: #ff6b6b;
+        }
+
+        .log-entry.success {
+            color: #51cf66;
+        }
+
+        .log-entry.info {
+            color: #74c0fc;
+        }
+
+        .log-entry.warning {
+            color: #ffd43b;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e9ecef;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WordPress XML → Markdown 変換ツール</h1>
+        <p class="subtitle">WordPressのエクスポートXMLを、カテゴリ別のMarkdownファイルに変換します</p>
+
+        <div class="upload-section" id="uploadSection">
+            <div class="file-input-wrapper">
+                <input type="file" id="xmlFileInput" accept=".xml" />
+                <label for="xmlFileInput" class="file-input-label">
+                    📁 XMLファイルを選択
+                </label>
+            </div>
+            <div class="drag-text">または、ここにファイルをドラッグ&ドロップ</div>
+            <div class="file-name" id="fileName">ファイルが選択されていません</div>
+        </div>
+
+        <div class="progress-bar" id="progressBar">
+            <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+
+        <button class="convert-btn" id="convertBtn" disabled>🚀 変換開始</button>
+
+        <div class="log-section" id="logSection">
+            <div class="log-entry info">ログが表示されます...</div>
+        </div>
+    </div>
+
+    <script>
+        // グローバル変数
+        let selectedFile = null;
+        let turndownService = null;
+
+        // DOM要素
+        const xmlFileInput = document.getElementById('xmlFileInput');
+        const fileName = document.getElementById('fileName');
+        const convertBtn = document.getElementById('convertBtn');
+        const logSection = document.getElementById('logSection');
+        const progressBar = document.getElementById('progressBar');
+        const progressBarFill = document.getElementById('progressBarFill');
+        const uploadSection = document.getElementById('uploadSection');
+
+        // Turndownの初期化と設定
+        function initTurndown() {
+            if (typeof TurndownService === 'undefined') {
+                addLog('Turndownライブラリの読み込みに失敗しました', 'error');
+                return false;
+            }
+
+            turndownService = new TurndownService({
+                headingStyle: 'atx',
+                codeBlockStyle: 'fenced'
+            });
+
+            turndownService.keep(['iframe']);
+            turndownService.addRule('lineBreak', {
+                filter: ['br'],
+                replacement: function () {
+                    return '  \n';
+                }
+            });
+
+            return true;
+        }
+
+        // ファイル選択イベント
+        xmlFileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                handleFileSelect(file);
+            }
+        });
+
+        // ドラッグ&ドロップイベント
+        uploadSection.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadSection.classList.add('drag-over');
+        });
+
+        uploadSection.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadSection.classList.remove('drag-over');
+        });
+
+        uploadSection.addEventListener('drop', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            uploadSection.classList.remove('drag-over');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+
+                // XMLファイルかチェック
+                if (file.name.toLowerCase().endsWith('.xml')) {
+                    handleFileSelect(file);
+                } else {
+                    addLog('XMLファイルを選択してください', 'error');
+                }
+            }
+        });
+
+        // ファイル選択処理の共通化
+        function handleFileSelect(file) {
+            selectedFile = file;
+            fileName.textContent = `選択済み: ${file.name}`;
+            convertBtn.disabled = false;
+            addLog(`ファイルが選択されました: ${file.name}`, 'success');
+        }
+
+        // 変換ボタンイベント
+        convertBtn.addEventListener('click', async () => {
+            if (!selectedFile) {
+                addLog('ファイルが選択されていません', 'error');
+                return;
+            }
+
+            // Turndown初期化
+            if (!turndownService) {
+                if (!initTurndown()) {
+                    return;
+                }
+            }
+
+            convertBtn.disabled = true;
+            progressBar.style.display = 'block';
+            clearLog();
+            addLog('変換を開始します...', 'info');
+
+            try {
+                const xmlText = await readFileAsText(selectedFile);
+                await convertXMLToMarkdown(xmlText);
+            } catch (error) {
+                addLog(`エラーが発生しました: ${error.message}`, 'error');
+                console.error(error);
+            } finally {
+                convertBtn.disabled = false;
+                progressBar.style.display = 'none';
+            }
+        });
+
+        // ファイル読み込み
+        function readFileAsText(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (e) => resolve(e.target.result);
+                reader.onerror = (e) => reject(new Error('ファイルの読み込みに失敗しました'));
+                reader.readAsText(file, 'UTF-8');
+            });
+        }
+
+        // XML解析とMarkdown変換のメイン処理
+        async function convertXMLToMarkdown(xmlText) {
+            updateProgress(10);
+            addLog('XMLを解析しています...', 'info');
+
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+
+            // パースエラーチェック
+            const parserError = xmlDoc.querySelector('parsererror');
+            if (parserError) {
+                throw new Error('XMLの解析に失敗しました。ファイル形式を確認してください。');
+            }
+
+            updateProgress(20);
+
+            // アイテム（記事）を取得
+            const items = xmlDoc.querySelectorAll('item');
+            addLog(`${items.length}件のアイテムを検出しました`, 'success');
+
+            updateProgress(30);
+
+            // 記事データを抽出
+            const posts = [];
+            let publishedCount = 0;
+            let skippedCount = 0;
+
+            items.forEach((item, index) => {
+                const postType = getElementText(item, 'wp\\:post_type', 'post_type');
+                const status = getElementText(item, 'wp\\:status', 'status');
+
+                // post_type="post" かつ status="publish" のみを対象
+                if (postType === 'post' && status === 'publish') {
+                    const post = extractPostData(item);
+                    if (post) {
+                        posts.push(post);
+                        publishedCount++;
+                    }
+                } else {
+                    skippedCount++;
+                    // 拡張ポイント: 下書きや固定ページもここで処理可能
+                }
+            });
+
+            addLog(`公開済み投稿: ${publishedCount}件`, 'success');
+            addLog(`スキップ: ${skippedCount}件（下書き/固定ページ等）`, 'warning');
+
+            updateProgress(50);
+
+            if (posts.length === 0) {
+                addLog('変換対象の記事がありません', 'warning');
+                return;
+            }
+
+            // ZIP作成
+            addLog('Markdownファイルを生成しています...', 'info');
+            await createZipArchive(posts);
+
+            updateProgress(100);
+            addLog('✓ 変換が完了しました！', 'success');
+        }
+
+        // 記事データ抽出
+        function extractPostData(item) {
+            try {
+                const title = getElementText(item, 'title');
+                const contentEncoded = getElementText(item, 'content\\:encoded', 'encoded');
+                const postDate = getElementText(item, 'wp\\:post_date', 'post_date');
+                const postName = getElementText(item, 'wp\\:post_name', 'post_name');
+                const postId = getElementText(item, 'wp\\:post_id', 'post_id');
+                const postType = getElementText(item, 'wp\\:post_type', 'post_type');
+                const status = getElementText(item, 'wp\\:status', 'status');
+
+                // カテゴリとタグを抽出
+                const categoryElements = item.querySelectorAll('category');
+                const categories = [];
+                const tags = [];
+
+                categoryElements.forEach(cat => {
+                    const domain = cat.getAttribute('domain');
+                    const nicename = cat.getAttribute('nicename');
+                    const text = cat.textContent.trim();
+
+                    if (domain === 'category') {
+                        categories.push({ name: text, slug: nicename || slugify(text) });
+                    } else if (domain === 'post_tag') {
+                        tags.push({ name: text, slug: nicename || slugify(text) });
+                    }
+                });
+
+                return {
+                    title,
+                    content: contentEncoded,
+                    date: postDate,
+                    slug: postName || slugify(title),
+                    id: postId,
+                    postType,
+                    status,
+                    categories,
+                    tags
+                };
+            } catch (error) {
+                console.error('記事データの抽出エラー:', error);
+                return null;
+            }
+        }
+
+        // XMLからテキスト取得（名前空間対応）
+        function getElementText(parent, tagName, fallbackTag = null) {
+            // 名前空間付きタグを試す
+            let element = parent.querySelector(tagName);
+
+            // 見つからない場合、fallbackTagを試す
+            if (!element && fallbackTag) {
+                element = parent.querySelector(fallbackTag);
+            }
+
+            // それでも見つからない場合、名前空間なしで試す
+            if (!element) {
+                const simpleName = tagName.replace('\\:', ':').split(':').pop();
+                element = parent.querySelector(simpleName);
+            }
+
+            return element ? element.textContent.trim() : '';
+        }
+
+        // スラッグ化関数（日本語対応）
+        function slugify(text) {
+            if (!text) return 'untitled';
+
+            // 日本語をローマ字変換（簡易版）
+            let slug = text.toLowerCase();
+
+            // 簡易的な全角→半角変換
+            slug = slug.replace(/[Ａ-Ｚａ-ｚ０-９]/g, (s) => {
+                return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+            });
+
+            // 日本語文字を削除（または必要に応じてローマ字変換ライブラリを使用）
+            slug = slug.replace(/[^\x00-\x7F]/g, '');
+
+            // 記号を削除してスペースをハイフンに
+            slug = slug
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+
+            return slug || 'untitled';
+        }
+
+        // 日付フォーマット（YYYY-MM-DD）
+        function formatDate(dateString) {
+            if (!dateString) return 'unknown-date';
+
+            try {
+                const date = new Date(dateString);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            } catch {
+                return 'unknown-date';
+            }
+        }
+
+        // Markdownファイル生成
+        function generateMarkdown(post) {
+            // Front Matter作成
+            const frontMatter = [
+                '---',
+                `title: "${escapeYaml(post.title)}"`,
+                `date: "${post.date}"`,
+                `slug: "${post.slug}"`,
+                `status: "${post.status}"`,
+                `post_type: "${post.postType}"`,
+                `wordpress_id: ${post.id}`
+            ];
+
+            // カテゴリ
+            if (post.categories.length > 0) {
+                frontMatter.push('categories:');
+                post.categories.forEach(cat => {
+                    frontMatter.push(`  - "${escapeYaml(cat.name)}"`);
+                });
+            }
+
+            // タグ
+            if (post.tags.length > 0) {
+                frontMatter.push('tags:');
+                post.tags.forEach(tag => {
+                    frontMatter.push(`  - "${escapeYaml(tag.name)}"`);
+                });
+            }
+
+            frontMatter.push('---');
+            frontMatter.push('');
+
+            // HTMLをMarkdownに変換
+            let markdown = turndownService.turndown(post.content || '');
+
+            return frontMatter.join('\n') + '\n' + markdown;
+        }
+
+        // YAML用エスケープ
+        function escapeYaml(str) {
+            if (!str) return '';
+            return str.replace(/"/g, '\\"').replace(/\n/g, '\\n');
+        }
+
+        // ZIP作成とダウンロード
+        async function createZipArchive(posts) {
+            const zip = new JSZip();
+            const categoryFolders = {};
+
+            posts.forEach((post, index) => {
+                // ファイル名生成
+                const datePrefix = formatDate(post.date);
+                const filename = `${datePrefix}-${post.slug}.md`;
+
+                // カテゴリフォルダ決定（日本語のまま使用）
+                let folderName = 'uncategorized';
+                let folderDisplayName = 'uncategorized';
+
+                if (post.categories.length > 0) {
+                    // 日本語カテゴリ名をそのまま使用
+                    folderDisplayName = post.categories[0].name || 'uncategorized';
+                    // ファイルシステム用に安全な名前に変換
+                    folderName = sanitizeFolderName(folderDisplayName);
+                }
+
+                // Markdown生成
+                const markdown = generateMarkdown(post);
+
+                // ZIPに追加
+                const filePath = `${folderName}/${filename}`;
+                zip.file(filePath, markdown);
+
+                // 統計情報
+                if (!categoryFolders[folderName]) {
+                    categoryFolders[folderName] = 0;
+                }
+                categoryFolders[folderName]++;
+
+                // プログレス更新
+                const progress = 50 + Math.floor((index / posts.length) * 40);
+                updateProgress(progress);
+            });
+
+            // カテゴリ別統計をログ出力
+            addLog('カテゴリ別ファイル数:', 'info');
+            Object.entries(categoryFolders).forEach(([folder, count]) => {
+                addLog(`  - ${folder}: ${count}件`, 'info');
+            });
+
+            updateProgress(90);
+            addLog('ZIPファイルを生成しています...', 'info');
+
+            // ZIP生成とダウンロード（UTF-8エンコーディング指定）
+            const blob = await zip.generateAsync({
+                type: 'blob',
+                compression: 'DEFLATE',
+                compressionOptions: {
+                    level: 6
+                }
+            });
+
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `wordpress-posts-${Date.now()}.zip`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            addLog(`ZIPファイルをダウンロードしました: ${a.download}`, 'success');
+        }
+
+        // フォルダ名をファイルシステムで安全な形式に変換
+        function sanitizeFolderName(name) {
+            if (!name) return 'uncategorized';
+
+            // Windows/MacOS/Linuxで使用できない文字を除去
+            let sanitized = name
+                .replace(/[<>:"/\\|?*\x00-\x1F]/g, '')  // 禁止文字を削除
+                .replace(/^\.+/, '')  // 先頭のドットを削除
+                .replace(/\.+$/, '')  // 末尾のドットを削除
+                .trim();
+
+            // 空になった場合は untitled を返す
+            if (!sanitized) return 'uncategorized';
+
+            // 長すぎる場合は切り詰め（最大100文字）
+            if (sanitized.length > 100) {
+                sanitized = sanitized.substring(0, 100);
+            }
+
+            return sanitized;
+        }
+
+        // プログレスバー更新
+        function updateProgress(percent) {
+            progressBarFill.style.width = `${percent}%`;
+        }
+
+        // ログ追加
+        function addLog(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+
+            const timestamp = new Date().toLocaleTimeString('ja-JP');
+            entry.textContent = `[${timestamp}] ${message}`;
+
+            logSection.appendChild(entry);
+            logSection.scrollTop = logSection.scrollHeight;
+        }
+
+        // ログクリア
+        function clearLog() {
+            logSection.innerHTML = '';
+        }
+
+        // 初期化処理
+        window.addEventListener('DOMContentLoaded', () => {
+            addLog('WordPress XML to Markdown Converter v1.0', 'success');
+            addLog('XMLファイルを選択して変換を開始してください', 'info');
+
+            // ライブラリ読み込み確認
+            setTimeout(() => {
+                if (typeof TurndownService === 'undefined') {
+                    addLog('⚠ Turndownライブラリが読み込まれていません', 'warning');
+                } else {
+                    addLog('✓ 変換ライブラリ読み込み完了', 'success');
+                }
+
+                if (typeof JSZip === 'undefined') {
+                    addLog('⚠ JSZipライブラリが読み込まれていません', 'warning');
+                } else {
+                    addLog('✓ ZIP生成ライブラリ読み込み完了', 'success');
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html>
